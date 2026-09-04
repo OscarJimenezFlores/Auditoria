@@ -2,7 +2,7 @@
 
 # Taller de laboratorio 03 · Evaluación de riesgos con SimpleRisk y detección técnica con OpenVAS/Greenbone
 
-**SI-084 · Auditoría de Sistemas** · Semana 03 · Sesión 2 en laboratorio · 60 min de taller + 40 de avance · calificación **procedimental**
+**SI-084 · Auditoría de Sistemas** · Semana 03 · Sesión 2 en laboratorio · 100 min · calificación **procedimental**
 
 > ¿Un término no le resulta claro? Está definido en el [glosario técnico del curso](../GLOSARIO.md).
 
@@ -29,7 +29,7 @@ flowchart TD
 | **Archivo** | `SI084-S03-TALLER-Grupo<N>.pdf` |
 | **Plantilla obligatoria** | [SI084-PLANTILLA-TALLER.docx](../PLANTILLAS/SI084-PLANTILLA-TALLER.docx) |
 | **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT, el índice actualizado y las capturas numeradas |
-| **Qué va dentro** | Las siete secciones del formato EPIS. La sección **3. Resultados** se califica contra la tabla de resultados esperados de esta guía, y cada resultado necesita su evidencia |
+| **Qué va dentro** | Las secciones de la plantilla. La **5. Resultados y evidencias** se califica contra la tabla de resultados esperados de esta guía, y **cada resultado necesita la evidencia que lo demuestre**. No se copian de aquí los objetivos, la duración ni los resultados de aprendizaje |
 | **Dónde se sube** | Aula virtual, tarea «Taller · Semana 03» |
 | **Cuándo vence** | 48 horas después de la sesión de laboratorio |
 
@@ -54,7 +54,7 @@ Apreciación y tratamiento del riesgo de seguridad de la información sobre el e
 
 ### 1.3. Tiempo de duración
 
-**100 minutos:** 60 de taller guiado y 40 de avance asistido.
+**100 minutos.**
 
 ### 1.4. Resultados de Aprendizaje (RA)
 
@@ -84,7 +84,11 @@ Apreciación y tratamiento del riesgo de seguridad de la información sobre el e
 
 ## 2. Procedimiento o Metodología
 
-### Paso A — Desplegar Greenbone e iniciar la sincronización (10 min)
+> **Documento del caso para esta semana.** La organización entrega **Relato del incidente del periodo**, en `CASOS/EMPRESA-<NN>-<slug>/documentos/incidente-detallado.md`. Es consistente con los datos de `datos/`. Las personas, usuarios y proveedores que menciona existen en los archivos. **No señala sus debilidades**; declara lo que la organización dice hacer.
+
+
+
+### Paso A — Desplegar Greenbone e iniciar la sincronización
 
 ```bash
 mkdir -p entorno/greenbone && cd entorno/greenbone
@@ -98,9 +102,9 @@ docker compose -p greenbone-community-edition logs -f gvmd | tail -20
 
 **Interfaz web.** http://127.0.0.1:9392 — se crea el usuario administrador siguiendo la documentación oficial. **Mientras sincroniza los *feeds*, se continúa con el Paso B.**
 
-> **Alternativa si el ancho de banda es insuficiente:** ejecutar `nuclei` (`projectdiscovery/nuclei`) contra los mismos objetivos. Es mucho más liviano y produce hallazgos con severidad y referencias, suficientes para el ejercicio de conversión a riesgo.
+> **Alternativa si el ancho de banda es insuficiente.** Ejecutar `nuclei` (`projectdiscovery/nuclei`) contra los mismos objetivos. Es mucho más liviano y produce hallazgos con severidad y referencias, suficientes para el ejercicio de conversión a riesgo.
 
-### Paso B — Desplegar SimpleRisk (5 min)
+### Paso B — Desplegar SimpleRisk
 
 ```yaml
 # agregar a entorno/docker-compose.yml
@@ -134,7 +138,7 @@ docker compose up -d simplerisk-db simplerisk
 3. Se fija el **criterio de aceptación**. Riesgos con valor ≤ 6 se pueden aceptar; > 6 requieren plan de tratamiento con plazo.
 4. Se registran los **dueños de riesgo** (usuarios) por área — Finanzas, Operaciones, TI, RR. HH.
 
-### Paso C — Escaneo de vulnerabilidades (10 min)
+### Paso C — Escaneo de vulnerabilidades
 
 En Greenbone, se identifica primero la subred del laboratorio:
 
@@ -158,7 +162,7 @@ docker run --rm --network audit_net instrumentisto/nmap \
   -sV -sC -p- --open 172.x.0.0/16 > ../20_evidencia/E03_scan/nmap_servicios.txt
 ```
 
-### Paso D — Convertir hallazgos técnicos en riesgos de negocio (20 min)
+### Paso D — Convertir hallazgos técnicos en riesgos de negocio
 
 Este es el núcleo intelectual del laboratorio. **Un CVE con CVSS 9.8 no es un riesgo alto por sí solo**. Depende del activo, de su exposición y del impacto en el negocio.
 
@@ -219,7 +223,7 @@ print("\nDistribución por nivel:\n", reg["nivel"].value_counts().to_string())
 
 **Discusión obligatoria en el laboratorio (10 min).** Se localiza en el registro un caso donde **el CVSS es alto pero el riesgo de negocio es bajo** (activo público, sin datos) y otro donde **el CVSS es medio pero el riesgo es crítico** (base de datos con información restringida). Este contraste es la justificación de por qué el auditor no reporta la salida cruda del escáner.
 
-### Paso E — Tratamiento y extracto de la Declaración de Aplicabilidad (15 min)
+### Paso E — Tratamiento y extracto de la Declaración de Aplicabilidad
 
 Se cargan en SimpleRisk los **cinco riesgos de mayor valor** y, para cada uno:
 
@@ -248,22 +252,10 @@ git add . && git commit -m "E03: escaneo de vulnerabilidades, registro de riesgo
 ---
 
 
-### Avance asistido · Avance del encargo asistido (40 min)
-
-Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: queda disponible para consultas y observa el reparto real del trabajo.
-
-| | |
-|---|---|
-| **Qué se trabaja** | los papeles de trabajo y entregables del encargo, según el programa de auditoría vigente |
-| **Quién decide qué hacer** | El equipo. El docente no asigna tareas en este tramo |
-| **Dónde se registra** | el tablero de avance del equipo, con cada elemento asignado a una persona |
-| **Para qué sirve la presencia del docente** | Resolver bloqueos en el momento, no revisar entregables |
-
-> **Se registra la contribución individual.** Lo trabajado en este tramo queda en el repositorio con su autoría. Es la evidencia del atributo **AG-I03 Trabajo Individual y en Equipo** que se mide en las semanas de cierre de unidad.
 
 ## 3. Resultados
 
-> **Evidencia obligatoria en GitHub.** Todo resultado de este taller se versiona en el repositorio del equipo. El informe **no consigna capturas sueltas**: consigna la **URL** del artefacto en GitHub. Una captura no permite verificar autoría, fecha ni contenido; un enlace sí.
+> **Evidencia obligatoria en GitHub.** Todo resultado de este taller se versiona en el repositorio del equipo. El informe **no consigna capturas sueltas**. Consigna la **URL** del artefacto en GitHub. Una captura no permite verificar autoría, fecha ni contenido; un enlace sí.
 >
 > | Qué se entrega | Dónde vive | Qué se escribe en el informe |
 > |---|---|---|
@@ -282,7 +274,7 @@ Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: qu
 > La URL que se consigna en el informe apunta a esa etiqueta:
 > `https://github.com/<organizacion>/<repositorio>/tree/taller-03`
 >
-> **Sin la URL, el resultado no se califica.** El docente evalúa sobre el repositorio, no sobre el PDF.
+> **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
 ### 3.1. Tabla de resultados
 
@@ -298,6 +290,28 @@ Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: qu
 | 6 | Cinco riesgos cargados en SimpleRisk con su plan de tratamiento y control ISO mapeado | Captura de SimpleRisk |
 | 7 | Extracto de SoA con al menos 5 controles, incluyendo uno **excluido con justificación** | `PT03_soa_extracto.md` |
 | 8 | Hashes registrados en la cadena de custodia y *commit* en Git | `SHA256SUMS_E03.txt`, `git log` |
+
+
+## Rúbrica procedimental (20 puntos)
+
+Se aplica sobre el informe entregado y la evidencia enlazada en el repositorio. **Cada criterio se califica de forma independiente.**
+
+| Criterio | 4 — Logrado | 2 — En proceso | 0 — Insuficiente |
+|---|---|---|---|
+| **Convertir hallazgos técnicos en riesgos de negocio** | Completo y correcto, con la evidencia que lo respalda | Completo con errores menores, o correcto pero sin toda la evidencia | Incompleto, o entregado sin ejecutar |
+| **Tratamiento y extracto de la Declaración de Aplicabilidad** | Completo y correcto, con la evidencia que lo respalda | Completo con errores menores, o correcto pero sin toda la evidencia | Incompleto, o entregado sin ejecutar |
+| **Evidencia verificable en el repositorio** | Cada resultado tiene su URL sobre la etiqueta `taller-NN`, y el enlace abre lo que dice | La mayoría tiene URL; alguna evidencia es una captura suelta | Se declaran resultados sin enlace, o el enlace no corresponde |
+| **Trazabilidad de la evidencia** | Todo hallazgo o dato se rastrea hasta el archivo, registro y fecha que lo sustenta | Rastreable en su mayoría; algún dato sin origen | Se afirman hechos sin poder ubicarlos en la evidencia |
+| **La evidencia entregada** | Las secciones de la plantilla completas; los papeles de trabajo quedan archivados y referenciados | Secciones completas con papeles de trabajo incompletos | Faltan secciones o no hay papeles de trabajo |
+
+| Puntaje | Equivalencia |
+|---|---|
+| 18 – 20 | Destacado |
+| 14 – 17 | Logrado |
+| 6 – 13 | En proceso |
+| 0 – 5 | Insuficiente |
+
+> **Un resultado declarado sin evidencia enlazada no se califica**, aunque el trabajo se haya hecho. La tabla de la sección 3.1 es la lista de cotejo; esta rúbrica es lo que determina la nota.
 
 ## 4. Conclusiones
 

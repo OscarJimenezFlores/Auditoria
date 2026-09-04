@@ -9,7 +9,7 @@
   Facultad de Ingeniería · Escuela Profesional de Ingeniería de Sistemas
 </p>
 
-<h1 align="center">Semana 02 · Principios de Seguridad de la Información · Roles y Responsabilidades</h1>
+<h1 align="center">Semana 04 · Controles de Auditoría de Aplicación, Físicos, Lógicos y de Calidad · La Ley SOX en el Perú</h1>
 
 <p align="center">
   <strong>SI-084 · Auditoría de Sistemas</strong><br>
@@ -27,33 +27,27 @@
 | **Ciclo** | X · 04 horas semanales · 03 créditos · Obligatorio |
 | **Prerrequisito** | SI-985 Gestión de la Configuración de Software |
 | **Unidad** | I — Seguridad de la Información en Auditoría de Sistemas |
-| **Semana** | 02 de 17 |
+| **Semana** | 04 de 17 |
 | **Duración** | 4 horas académicas de 50 min · 100 min de teoría con la dinámica incluida en aula · 100 min de taller en laboratorio |
 | **Resultados de aprendizaje** | **RA1** Analiza e interpreta los conceptos y terminología de Auditoría de Sistemas · **RA2** Evalúa la seguridad de la información en Auditoría de Sistemas |
-| **Atributos del graduado** | AG-I02 Ética (CD2, nivel 4) · AG-I08 Análisis de Problemas (CD2, nivel 4) |
-
-### Lo que indica el sílabo
-
-**Contenido conceptual.** Principios de seguridad de la Información, información vs. seguridad. Seguridad de la Información, roles y responsabilidades.
-
-**Contenido procedimental.** Comprensión sobre los principios y la relevancia de la seguridad informática y la evaluación de los riesgos.
+| **Atributos del graduado** | AG-I02 Ética (CD3, nivel 4) · AG-I11 Uso de Herramientas (CD1 y CD2, nivel 4) |
 
 ## Materiales de esta semana
 
 | | Documento | Qué encontrarás | Dónde y cuánto dura |
 |---|---|---|---|
-| 1 | **[Teoría](1-TEORIA.md)** | Información y seguridad de la información · Los principios que sostienen el diseño de controles · Roles y responsabilidades en seguridad de la información | Aula · 100 min |
-| 2 | **[Dinámica de aula](2-DINAMICA.md)** | El organigrama tóxico, con su material, su ejemplo resuelto y su rúbrica | Aula · dentro de los 100 min de la sesión de teoría |
-| 3 | **[Taller de laboratorio](3-TALLER.md)** | Auditoría de identidades, accesos y segregación de funciones con Keycloak | Laboratorio · 100 min |
+| 1 | **[Teoría](1-TEORIA.md)** | Taxonomía de los controles de auditoría · Controles generales de TI · Controles de aplicación sobre el ciclo del dato | Aula · 100 min |
+| 2 | **[Dinámica de aula](2-DINAMICA.md)** | El control que no se puede creer, con su material, su ejemplo resuelto y su rúbrica | Aula · dentro de los 100 min de la sesión de teoría |
+| 3 | **[Taller de laboratorio](3-TALLER.md)** | Auditoría de configuración segura con Lynis, OpenSCAP, Docker Bench y Trivy | Laboratorio · 100 min |
 
 ## Ruta de la semana
 
 ```mermaid
 flowchart LR
     A["<b>Sesión 1 · Aula</b><br/>Teoría · 100 min"]
-    B["<b>Dinámica de aula</b><br/>El organigrama tóxico<br/><i>nota cognitiva</i>"]
-    C["<b>Sesión 2 · Laboratorio</b><br/>Auditoría de identidades,<br/>accesos y segregación de<br/>funciones con Keycloak<br/><i>nota procedimental</i>"]
-    D["<b>Entregables</b><br/>de la semana 02"]
+    B["<b>Dinámica de aula</b><br/>El control que no se puede<br/>creer<br/><i>nota cognitiva</i>"]
+    C["<b>Sesión 2 · Laboratorio</b><br/>Auditoría de configuración<br/>segura con Lynis, OpenSCAP,<br/>Docker Bench y Trivy<br/><i>nota procedimental</i>"]
+    D["<b>Entregables</b><br/>de la semana 04"]
     A --> B --> C --> D
     classDef aula fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
     classDef lab fill:#E9F6F2,stroke:#0F766E,stroke-width:1px,color:#0F4C46;
@@ -67,9 +61,9 @@ flowchart LR
 
 | Entregable | Formato y nombre del archivo | Vence |
 |---|---|---|
-| **Dinámica de aula** · El organigrama tóxico | PDF desde la [plantilla de dinámica](../PLANTILLAS/SI084-PLANTILLA-DINAMICA.docx) · `SI084-S02-DINAMICA-Grupo<N>.pdf` | Antes de cerrar la sesión de teoría |
-| **Informe del taller de laboratorio N.º 02** | PDF en formato EPIS desde la [plantilla de taller](../PLANTILLAS/SI084-PLANTILLA-TALLER.docx) · `SI084-S02-TALLER-Grupo<N>.pdf` | 48 h después del taller |
-| Hallazgos H-002 y H-003 en el repositorio | Commit firmado en Git | 48 h después del laboratorio |
+| **Dinámica de aula** · El control que no se puede creer | PDF desde la [plantilla de dinámica](../PLANTILLAS/SI084-PLANTILLA-DINAMICA.docx) · `SI084-S04-DINAMICA-Grupo<N>.pdf` | Hasta 24 h después de la sesión de teoría |
+| **Informe del taller de laboratorio N.º 04** | PDF en formato EPIS desde la [plantilla de taller](../PLANTILLAS/SI084-PLANTILLA-TALLER.docx) · `SI084-S04-TALLER-Grupo<N>.pdf` | 48 h después del taller |
+| Matriz de control consolidada en el repositorio | Commit en Git | 48 h después del laboratorio |
 
 > Ambos se entregan en **PDF**, con la carátula de la UPT y los códigos de todos los integrantes. Las plantillas obligatorias están en [`PLANTILLAS/`](../PLANTILLAS/).
 
@@ -77,16 +71,15 @@ flowchart LR
 
 | Criterio | Instrumento | Peso |
 |---|---|---|
-| Cognitivo | Rúbrica del organigrama tóxico + exposición de 10 min en la Semana 03 | 25 % |
-| Procedimental | Lista de cotejo de los 7 resultados del laboratorio | 35 % |
-| Actitudinal | Participación y cumplimiento de las reglas de seguridad del laboratorio | 15 % |
+| Cognitivo | Rúbrica de la matriz riesgo-control + exposición de 10 min en la Semana 05 | 25 % |
+| Procedimental | Lista de cotejo de los 8 resultados del laboratorio | 35 % |
+| Actitudinal | Manejo responsable de los reportes clasificados como Confidencial | 15 % |
 
-## Preparación para la Semana 03
+## Preparación para la Semana 05
 
-- **Leer.** ISO/IEC 27001:2022, cláusulas 6.1.2 y 6.1.3 (apreciación y tratamiento del riesgo).
-- **Leer.** ISO/IEC 27005:2022, capítulos sobre identificación y análisis del riesgo.
-- Revisar la documentación de **MONARC**. https://www.monarc.lu/
-- **Dejar el entorno operativo.** La Semana 03 agrega MONARC y OpenVAS/GVM sobre `audit_net`.
+- **Leer.** Piattini y Del Peso, capítulos de auditoría de la explotación, del desarrollo y de las redes.
+- **Revisar.** OWASP (*Open Worldwide Application Security Project*) Web Security Testing Guide (https://owasp.org/www-project-web-security-testing-guide/) y la documentación de Wazuh (https://documentation.wazuh.com/).
+- **Mantener el entorno operativo.** La Semana 05 audita las aplicaciones y la infraestructura del laboratorio.
 
 ---
 

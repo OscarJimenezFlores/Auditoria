@@ -2,7 +2,7 @@
 
 # Taller de laboratorio 01 · Montaje del laboratorio de auditoría en Docker y custodia de la evidencia digital
 
-**SI-084 · Auditoría de Sistemas** · Semana 01 · Sesión 2 en laboratorio · 60 min de taller + 40 de avance · calificación **procedimental**
+**SI-084 · Auditoría de Sistemas** · Semana 01 · Sesión 2 en laboratorio · 100 min · calificación **procedimental**
 
 > ¿Un término no le resulta claro? Está definido en el [glosario técnico del curso](../GLOSARIO.md).
 
@@ -29,7 +29,7 @@ flowchart TD
 | **Archivo** | `SI084-S01-TALLER-Grupo<N>.pdf` |
 | **Plantilla obligatoria** | [SI084-PLANTILLA-TALLER.docx](../PLANTILLAS/SI084-PLANTILLA-TALLER.docx) |
 | **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT, el índice actualizado y las capturas numeradas |
-| **Qué va dentro** | Las siete secciones del formato EPIS. La sección **3. Resultados** se califica contra la tabla de resultados esperados de esta guía, y cada resultado necesita su evidencia |
+| **Qué va dentro** | Las secciones de la plantilla. La **5. Resultados y evidencias** se califica contra la tabla de resultados esperados de esta guía, y **cada resultado necesita la evidencia que lo demuestre**. No se copian de aquí los objetivos, la duración ni los resultados de aprendizaje |
 | **Dónde se sube** | Aula virtual, tarea «Taller · Semana 01» |
 | **Cuándo vence** | 48 horas después de la sesión de laboratorio |
 
@@ -53,7 +53,7 @@ Montaje de un entorno auditable reproducible con Docker Compose y establecimient
 
 ### 1.3. Tiempo de duración
 
-**100 minutos:** 60 de taller guiado y 40 de avance asistido.
+**100 minutos.**
 
 ### 1.4. Resultados de Aprendizaje (RA)
 
@@ -92,7 +92,7 @@ Montaje de un entorno auditable reproducible con Docker Compose y establecimient
 | `wordpress:latest` | Portal institucional simulado | https://hub.docker.com/_/wordpress |
 | `mariadb:11` | Motor de datos del portal | https://hub.docker.com/_/mariadb |
 
-> **Verificación previa.** Ejecuta `docker --version`, `docker compose version` y `git --version`. Si alguno falla, resuélvelo **antes** del laboratorio: la instalación no forma parte de las dos horas de práctica.
+> **Verificación previa.** Ejecuta `docker --version`, `docker compose version` y `git --version`. Si alguno falla, resuélvelo **antes** del laboratorio. La instalación no forma parte de las dos horas de práctica.
 
 ### 1.6. Seguridad
 
@@ -110,7 +110,7 @@ Reglas no negociables:
 
 ## 2. Procedimiento o Metodología
 
-### Paso A — Crear el repositorio de papeles de trabajo (15 min)
+### Paso A — Crear el repositorio de papeles de trabajo
 
 Todo auditor trabaja sobre un expediente estructurado. Se crea con esta jerarquía normalizada:
 
@@ -141,7 +141,7 @@ FIN
 git add . && git commit -m "Estructura inicial del expediente de auditoria"
 ```
 
-### Paso B — Definir el entorno auditable (15 min)
+### Paso B — Definir el entorno auditable
 
 Se crea `entorno/docker-compose.yml`. Este archivo **es en sí mismo evidencia**. Describe con exactitud el sistema auditado.
 
@@ -234,7 +234,7 @@ Comprobación de servicios:
 | Portal WordPress | http://127.0.0.1:8082 |
 | PostgreSQL | `127.0.0.1:5432` |
 
-### Paso C — Capturar la línea base del sistema auditado (10 min)
+### Paso C — Capturar la línea base del sistema auditado
 
 La línea base responde a la pregunta que toda auditoría termina haciendo. *¿cómo estaba esto el día que empezamos?*
 
@@ -261,20 +261,20 @@ docker exec si084_db psql -U erp_app -d erp -c "\du" > usuarios_postgres.txt
 docker inspect si084_db --format '{{json .Config.Env}}' > env_db.json
 ```
 
-> **Observación de auditor.** El paso 6 casi siempre produce el primer hallazgo del curso: las credenciales viajan en variables de entorno en texto claro y son visibles para cualquiera con acceso al *socket* de Docker.
+> **Observación de auditor.** El paso 6 casi siempre produce el primer hallazgo del curso. Las credenciales viajan en variables de entorno en texto claro y son visibles para cualquiera con acceso al *socket* de Docker.
 
-### Paso D — Sellar la evidencia (cadena de custodia) (10 min)
+### Paso D — Sellar la evidencia (cadena de custodia)
 
 Sin integridad demostrable, la evidencia es refutable. Se calcula el hash SHA-256 de cada artefacto y se registra.
 
-**Linux / macOS:**
+**Linux / macOS.**
 
 ```bash
 sha256sum * > ../SHA256SUMS_E01.txt
 cat ../SHA256SUMS_E01.txt
 ```
 
-**Windows PowerShell:**
+**Windows PowerShell.**
 
 ```powershell
 Get-ChildItem -File | Get-FileHash -Algorithm SHA256 |
@@ -284,7 +284,7 @@ Get-ChildItem -File | Get-FileHash -Algorithm SHA256 |
 
 Se registra cada archivo en `20_evidencia/CADENA_DE_CUSTODIA.md` con identificador, nombre, hash, fecha y hora **en UTC**, auditor responsable, método de obtención y sistema de origen.
 
-**Sellado de tiempo con Git.** El *commit* de Git es en sí un sello criptográfico: su identificador es un hash del contenido más la marca temporal más el *commit* anterior, de modo que alterar un archivo antiguo invalida toda la cadena posterior.
+**Sellado de tiempo con Git.** El *commit* de Git es en sí un sello criptográfico. Su identificador es un hash del contenido más la marca temporal más el *commit* anterior, de modo que alterar un archivo antiguo invalida toda la cadena posterior.
 
 ```bash
 cd ../..
@@ -301,7 +301,7 @@ sha256sum 20_evidencia/E01_baseline/puertos.tsv     # el hash difiere del regist
 git checkout -- 20_evidencia/E01_baseline/puertos.tsv   # se restaura
 ```
 
-### Paso E — Primer hallazgo documentado (10 min)
+### Paso E — Primer hallazgo documentado
 
 Con la línea base en mano, se redacta el primer hallazgo en `40_hallazgos/H-001.md`:
 
@@ -342,22 +342,10 @@ Plazo: 30 días.
 ---
 
 
-### Avance asistido · Avance del encargo asistido (40 min)
-
-Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: queda disponible para consultas y observa el reparto real del trabajo.
-
-| | |
-|---|---|
-| **Qué se trabaja** | los papeles de trabajo y entregables del encargo, según el programa de auditoría vigente |
-| **Quién decide qué hacer** | El equipo. El docente no asigna tareas en este tramo |
-| **Dónde se registra** | el tablero de avance del equipo, con cada elemento asignado a una persona |
-| **Para qué sirve la presencia del docente** | Resolver bloqueos en el momento, no revisar entregables |
-
-> **Se registra la contribución individual.** Lo trabajado en este tramo queda en el repositorio con su autoría. Es la evidencia del atributo **AG-I03 Trabajo Individual y en Equipo** que se mide en las semanas de cierre de unidad.
 
 ## 3. Resultados
 
-> **Evidencia obligatoria en GitHub.** Todo resultado de este taller se versiona en el repositorio del equipo. El informe **no consigna capturas sueltas**: consigna la **URL** del artefacto en GitHub. Una captura no permite verificar autoría, fecha ni contenido; un enlace sí.
+> **Evidencia obligatoria en GitHub.** Todo resultado de este taller se versiona en el repositorio del equipo. El informe **no consigna capturas sueltas**. Consigna la **URL** del artefacto en GitHub. Una captura no permite verificar autoría, fecha ni contenido; un enlace sí.
 >
 > | Qué se entrega | Dónde vive | Qué se escribe en el informe |
 > |---|---|---|
@@ -376,7 +364,7 @@ Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: qu
 > La URL que se consigna en el informe apunta a esa etiqueta:
 > `https://github.com/<organizacion>/<repositorio>/tree/taller-01`
 >
-> **Sin la URL, el resultado no se califica.** El docente evalúa sobre el repositorio, no sobre el PDF.
+> **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
 ### 3.1. Tabla de resultados
 
@@ -393,6 +381,28 @@ Al término de la práctica el estudiante debe evidenciar:
 | 5 | `CADENA_DE_CUSTODIA.md` con las filas completas y horas en UTC | Contenido del archivo |
 | 6 | Hallazgo `H-001.md` con los cinco bloques de la estructura CCCER | Contenido del archivo |
 | 7 | Demostración de que modificar un artefacto rompe el hash registrado | Captura del antes y el después |
+
+
+## Rúbrica procedimental (20 puntos)
+
+Se aplica sobre el informe entregado y la evidencia enlazada en el repositorio. **Cada criterio se califica de forma independiente.**
+
+| Criterio | 4 — Logrado | 2 — En proceso | 0 — Insuficiente |
+|---|---|---|---|
+| **Crear el repositorio de papeles de trabajo** | Completo y correcto, con la evidencia que lo respalda | Completo con errores menores, o correcto pero sin toda la evidencia | Incompleto, o entregado sin ejecutar |
+| **Definir el entorno auditable** | Completo y correcto, con la evidencia que lo respalda | Completo con errores menores, o correcto pero sin toda la evidencia | Incompleto, o entregado sin ejecutar |
+| **Evidencia verificable en el repositorio** | Cada resultado tiene su URL sobre la etiqueta `taller-NN`, y el enlace abre lo que dice | La mayoría tiene URL; alguna evidencia es una captura suelta | Se declaran resultados sin enlace, o el enlace no corresponde |
+| **Trazabilidad de la evidencia** | Todo hallazgo o dato se rastrea hasta el archivo, registro y fecha que lo sustenta | Rastreable en su mayoría; algún dato sin origen | Se afirman hechos sin poder ubicarlos en la evidencia |
+| **La evidencia entregada** | Las secciones de la plantilla completas; los papeles de trabajo quedan archivados y referenciados | Secciones completas con papeles de trabajo incompletos | Faltan secciones o no hay papeles de trabajo |
+
+| Puntaje | Equivalencia |
+|---|---|
+| 18 – 20 | Destacado |
+| 14 – 17 | Logrado |
+| 6 – 13 | En proceso |
+| 0 – 5 | Insuficiente |
+
+> **Un resultado declarado sin evidencia enlazada no se califica**, aunque el trabajo se haya hecho. La tabla de la sección 3.1 es la lista de cotejo; esta rúbrica es lo que determina la nota.
 
 ## 4. Conclusiones
 
@@ -412,7 +422,7 @@ El estudiante redacta un mínimo de tres conclusiones propias. Se esperan línea
 - ISACA. *ITAF: A Professional Practices Framework for IS Audit/Assurance* (5.ª ed.). https://www.isaca.org/resources/frameworks-standards-and-models
 - Ley 30096, Ley de Delitos Informáticos (Perú). https://www.gob.pe/institucion/congreso-de-la-republica/normas-legales
 - Docker Inc. *Docker Compose specification*. https://docs.docker.com/reference/compose-file/
-- OWASP Foundation. *OWASP Juice Shop Project*. https://owasp.org/www-project-juice-shop/
+- OWASP (*Open Worldwide Application Security Project*) Foundation. *OWASP Juice Shop Project*. https://owasp.org/www-project-juice-shop/
 
 ## 6. Anexos
 

@@ -2,7 +2,7 @@
 
 # Taller de laboratorio 02 · Auditoría de identidades, accesos y segregación de funciones con Keycloak
 
-**SI-084 · Auditoría de Sistemas** · Semana 02 · Sesión 2 en laboratorio · 60 min de taller + 40 de avance · calificación **procedimental**
+**SI-084 · Auditoría de Sistemas** · Semana 02 · Sesión 2 en laboratorio · 100 min · calificación **procedimental**
 
 > ¿Un término no le resulta claro? Está definido en el [glosario técnico del curso](../GLOSARIO.md).
 
@@ -30,7 +30,7 @@ flowchart TD
 | **Archivo** | `SI084-S02-TALLER-Grupo<N>.pdf` |
 | **Plantilla obligatoria** | [SI084-PLANTILLA-TALLER.docx](../PLANTILLAS/SI084-PLANTILLA-TALLER.docx) |
 | **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT, el índice actualizado y las capturas numeradas |
-| **Qué va dentro** | Las siete secciones del formato EPIS. La sección **3. Resultados** se califica contra la tabla de resultados esperados de esta guía, y cada resultado necesita su evidencia |
+| **Qué va dentro** | Las secciones de la plantilla. La **5. Resultados y evidencias** se califica contra la tabla de resultados esperados de esta guía, y **cada resultado necesita la evidencia que lo demuestre**. No se copian de aquí los objetivos, la duración ni los resultados de aprendizaje |
 | **Dónde se sube** | Aula virtual, tarea «Taller · Semana 02» |
 | **Cuándo vence** | 48 horas después de la sesión de laboratorio |
 
@@ -55,7 +55,7 @@ Auditoría de la gestión de identidades y accesos sobre un proveedor de identid
 
 ### 1.3. Tiempo de duración
 
-**100 minutos:** 60 de taller guiado y 40 de avance asistido.
+**100 minutos.**
 
 ### 1.4. Resultados de Aprendizaje (RA)
 
@@ -84,7 +84,11 @@ Auditoría de la gestión de identidades y accesos sobre un proveedor de identid
 
 ## 2. Procedimiento o Metodología
 
-### Paso A — Desplegar el proveedor de identidad (10 min)
+> **Documento del caso para esta semana.** La organización entrega **Organigrama y matriz de accesos**, en `CASOS/EMPRESA-<NN>-<slug>/documentos/organigrama-y-accesos.md`. Es consistente con los datos de `datos/`. Las personas, usuarios y proveedores que menciona existen en los archivos. **No señala sus debilidades**; declara lo que la organización dice hacer.
+
+
+
+### Paso A — Desplegar el proveedor de identidad
 
 Se agrega el servicio al `docker-compose.yml` de la Semana 01:
 
@@ -109,7 +113,7 @@ docker compose logs -f keycloak | head -30   # esperar "Running the server in de
 
 **Consola de administración.** http://127.0.0.1:8080 → *realm* `master`, usuario `admin`.
 
-### Paso B — Poblar el realm corporativo (10 min)
+### Paso B — Poblar el realm corporativo
 
 Se crea el *realm* `comercializadora` con la estructura organizacional a auditar. Se ejecuta con el CLI interno de Keycloak:
 
@@ -144,9 +148,9 @@ docker exec -i si084_keycloak /opt/keycloak/bin/kcadm.sh create partialImport \
   -r comercializadora -f /tmp/usuarios.json
 ```
 
-> Si el tiempo apremia, se importa directamente el *realm* completo preparado: `docker exec -i si084_keycloak /opt/keycloak/bin/kc.sh import --file /tmp/realm-comercializadora.json`
+> Si el tiempo apremia, se importa directamente el *realm* completo preparado. `Docker exec -i si084_keycloak /opt/keycloak/bin/kc.sh import --file /tmp/realm-comercializadora.json`
 
-### Paso C — Extraer la matriz de permisos efectivos (10 min)
+### Paso C — Extraer la matriz de permisos efectivos
 
 El auditor **no confía en la pantalla**. Extrae por API y analiza fuera del sistema auditado.
 
@@ -183,9 +187,9 @@ curl -s -H "Authorization: Bearer $TOKEN" \
   "http://127.0.0.1:8080/admin/realms/comercializadora/events/config" > config_eventos.json
 ```
 
-> **Punto de auditoría.** El paso 3 usa el endpoint `composite`, no `role-mappings/realm`. La diferencia es el hallazgo: la pantalla de administración muestra los roles *directos*, mientras que el permiso real del usuario incluye los heredados. Auditar la pantalla equivocada produce un informe que subestima el privilegio.
+> **Punto de auditoría.** El paso 3 usa el endpoint `composite`, no `role-mappings/realm`. La diferencia es el hallazgo. La pantalla de administración muestra los roles *directos*, mientras que el permiso real del usuario incluye los heredados. Auditar la pantalla equivocada produce un informe que subestima el privilegio.
 
-### Paso D — Detectar conflictos de segregación de funciones (15 min)
+### Paso D — Detectar conflictos de segregación de funciones
 
 Se define primero la **matriz de conflictos** —el criterio— y luego se contrasta con la evidencia:
 
@@ -238,7 +242,7 @@ sha256sum ../20_evidencia/E02_iam/* ../../40_hallazgos/PT02_conflictos_sod.csv \
   >> ../SHA256SUMS_E02.txt
 ```
 
-### Paso E — Pruebas de ciclo de vida y política de credenciales (10 min)
+### Paso E — Pruebas de ciclo de vida y política de credenciales
 
 | Prueba | Comando o verificación | Criterio ISO/IEC 27001:2022 |
 |---|---|---|
@@ -251,7 +255,7 @@ sha256sum ../20_evidencia/E02_iam/* ../../40_hallazgos/PT02_conflictos_sod.csv \
 | **P7** Transporte cifrado exigido | `jq .sslRequired politica_realm.json` — `none` es hallazgo | A.8.24 |
 | **P8** Sesión con expiración razonable | `jq .ssoSessionIdleTimeout politica_realm.json` | A.8.5 |
 
-### Paso F — Documentar los hallazgos (5 min)
+### Paso F — Documentar los hallazgos
 
 Se redactan como mínimo **dos hallazgos** en `40_hallazgos/`, con estructura CCCER completa y referencia al identificador de evidencia y su hash:
 
@@ -261,22 +265,10 @@ Se redactan como mínimo **dos hallazgos** en `40_hallazgos/`, con estructura CC
 ---
 
 
-### Avance asistido · Avance del encargo asistido (40 min)
-
-Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: queda disponible para consultas y observa el reparto real del trabajo.
-
-| | |
-|---|---|
-| **Qué se trabaja** | los papeles de trabajo y entregables del encargo, según el programa de auditoría vigente |
-| **Quién decide qué hacer** | El equipo. El docente no asigna tareas en este tramo |
-| **Dónde se registra** | el tablero de avance del equipo, con cada elemento asignado a una persona |
-| **Para qué sirve la presencia del docente** | Resolver bloqueos en el momento, no revisar entregables |
-
-> **Se registra la contribución individual.** Lo trabajado en este tramo queda en el repositorio con su autoría. Es la evidencia del atributo **AG-I03 Trabajo Individual y en Equipo** que se mide en las semanas de cierre de unidad.
 
 ## 3. Resultados
 
-> **Evidencia obligatoria en GitHub.** Todo resultado de este taller se versiona en el repositorio del equipo. El informe **no consigna capturas sueltas**: consigna la **URL** del artefacto en GitHub. Una captura no permite verificar autoría, fecha ni contenido; un enlace sí.
+> **Evidencia obligatoria en GitHub.** Todo resultado de este taller se versiona en el repositorio del equipo. El informe **no consigna capturas sueltas**. Consigna la **URL** del artefacto en GitHub. Una captura no permite verificar autoría, fecha ni contenido; un enlace sí.
 >
 > | Qué se entrega | Dónde vive | Qué se escribe en el informe |
 > |---|---|---|
@@ -295,7 +287,7 @@ Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: qu
 > La URL que se consigna en el informe apunta a esa etiqueta:
 > `https://github.com/<organizacion>/<repositorio>/tree/taller-02`
 >
-> **Sin la URL, el resultado no se califica.** El docente evalúa sobre el repositorio, no sobre el PDF.
+> **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
 ### 3.1. Tabla de resultados
 
@@ -310,6 +302,28 @@ Los últimos 40 minutos del laboratorio son del equipo. El docente no dirige: qu
 | 5 | Tabla de las ocho pruebas P1–P8 con veredicto y evidencia por prueba | Papel de trabajo |
 | 6 | Dos hallazgos CCCER con criterio ISO citado por código de control | `40_hallazgos/H-002.md`, `H-003.md` |
 | 7 | `SHA256SUMS_E02.txt` y registro en la cadena de custodia | Contenido de los archivos |
+
+
+## Rúbrica procedimental (20 puntos)
+
+Se aplica sobre el informe entregado y la evidencia enlazada en el repositorio. **Cada criterio se califica de forma independiente.**
+
+| Criterio | 4 — Logrado | 2 — En proceso | 0 — Insuficiente |
+|---|---|---|---|
+| **Desplegar el proveedor de identidad** | Completo y correcto, con la evidencia que lo respalda | Completo con errores menores, o correcto pero sin toda la evidencia | Incompleto, o entregado sin ejecutar |
+| **Detectar conflictos de segregación de funciones** | Completo y correcto, con la evidencia que lo respalda | Completo con errores menores, o correcto pero sin toda la evidencia | Incompleto, o entregado sin ejecutar |
+| **Evidencia verificable en el repositorio** | Cada resultado tiene su URL sobre la etiqueta `taller-NN`, y el enlace abre lo que dice | La mayoría tiene URL; alguna evidencia es una captura suelta | Se declaran resultados sin enlace, o el enlace no corresponde |
+| **Trazabilidad de la evidencia** | Todo hallazgo o dato se rastrea hasta el archivo, registro y fecha que lo sustenta | Rastreable en su mayoría; algún dato sin origen | Se afirman hechos sin poder ubicarlos en la evidencia |
+| **La evidencia entregada** | Las secciones de la plantilla completas; los papeles de trabajo quedan archivados y referenciados | Secciones completas con papeles de trabajo incompletos | Faltan secciones o no hay papeles de trabajo |
+
+| Puntaje | Equivalencia |
+|---|---|
+| 18 – 20 | Destacado |
+| 14 – 17 | Logrado |
+| 6 – 13 | En proceso |
+| 0 – 5 | Insuficiente |
+
+> **Un resultado declarado sin evidencia enlazada no se califica**, aunque el trabajo se haya hecho. La tabla de la sección 3.1 es la lista de cotejo; esta rúbrica es lo que determina la nota.
 
 ## 4. Conclusiones
 

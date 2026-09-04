@@ -14,6 +14,17 @@
 - Qué es proteger la información.
 - Cómo se organiza el curso como un encargo de auditoría.
 
+## Distribución del tiempo
+
+| Bloque | Minutos |
+|---|---|
+| Prueba de entrada | 10 |
+| Qué es auditar | 15 |
+| Qué es proteger la información | 20 |
+| Cómo se organiza el curso como un encargo de auditoría | 15 |
+| Cierre y encuadre metodológico | 5 |
+| **Total de la sesión de aula** | **65** |
+
 ## Mapa de la sesión
 
 ```mermaid
@@ -44,7 +55,7 @@ flowchart TD
 
 ---
 
-## Prueba de entrada (10 min)
+## Prueba de entrada
 
 Instrumento diagnóstico de 15 preguntas de opción múltiple, sin nota, para calibrar el punto de partida del grupo. Ejes evaluados:
 
@@ -57,7 +68,7 @@ Instrumento diagnóstico de 15 preguntas de opción múltiple, sin nota, para ca
 
 El resultado se comparte de forma agregada (histograma anónimo) y define qué refuerzos se insertan en las semanas 2 a 4.
 
-## Qué es auditar (15 min)
+## Qué es auditar
 
 **Definición normativa.** La ISO 19011:2018 define *auditoría* como el «proceso sistemático, independiente y documentado para obtener evidencia objetiva y evaluarla de manera objetiva con el fin de determinar el grado en que se cumplen los criterios de auditoría». Cada palabra de esa definición es operativa:
 
@@ -86,13 +97,33 @@ El resultado se comparte de forma agregada (histograma anónimo) y define qué r
 
 Si falta el criterio, el auditor está opinando. Si falta la evidencia, está especulando. Si falta la condición, no hay nada que reportar.
 
-**Auditoría de sistemas y auditoría integrada.** Piattini y Del Peso sitúan la auditoría informática como una especialización de la auditoría que evalúa los sistemas de información en su totalidad: los datos, el software, el hardware, las redes, las personas y los procedimientos. Su *valor agregado a la auditoría integrada* es que ninguna auditoría financiera moderna puede emitir opinión sin evaluar los controles generales de TI (ITGC), porque los estados financieros se producen dentro de un ERP: si el control de accesos del ERP está roto, la cifra que imprime el ERP no es confiable, por muy bien cuadrada que esté.
+**Auditoría de sistemas y auditoría integrada.** Piattini y Del Peso sitúan la auditoría informática como una especialización de la auditoría que evalúa los sistemas de información en su totalidad — los datos, el software, el hardware, las redes, las personas y los procedimientos. Su *valor agregado a la auditoría integrada* es que ninguna auditoría financiera moderna puede emitir opinión sin evaluar los controles generales de TI (ITGC), porque los estados financieros se producen dentro de un ERP — si el control de accesos del ERP está roto, la cifra que imprime el ERP no es confiable, por muy bien cuadrada que esté.
 
 Esta es la razón por la que la Sarbanes-Oxley Act de 2002 —promulgada tras los colapsos de Enron y WorldCom— convirtió la evaluación de los controles internos sobre el reporte financiero, incluidos los de TI, en una obligación legal para las empresas listadas en bolsa de los Estados Unidos, con efecto de arrastre sobre sus subsidiarias en el Perú.
 
-## Qué es proteger la información (20 min)
 
-**Información ≠ dato ≠ sistema.** El objeto protegido es la *información*, con independencia del soporte: base de datos, papel, conversación, respaldo en cinta o mensajería. Por eso la norma se llama sistema de gestión de la *seguridad de la información* y no «seguridad informática».
+**Ejemplo trabajado — la diferencia entre revisar y auditar.** Dos personas miran el mismo hecho. El sistema de ventas permite anular una factura ya emitida.
+
+| | El técnico revisa | El auditor audita |
+|---|---|---|
+| **Qué observa** | «Se puede anular una factura» | «Se puede anular una factura ya emitida, sin registro de quién ni por qué» |
+| **Contra qué lo compara** | Con lo que le parece razonable | Contra un **criterio**: el manual de procedimientos de la empresa, numeral 8.4, que exige autorización del jefe de ventas |
+| **Qué concluye** | «Habría que arreglarlo» | «Condición: 31 anulaciones en el periodo sin registro de autorización. Criterio: numeral 8.4. Efecto: S/ 214 000 en ventas anuladas sin trazabilidad» |
+| **Con qué lo sustenta** | Su experiencia | La extracción del sistema, con fecha y responsable de la entrega |
+| **A quién responde** | A quien le preguntó | Al destinatario del encargo, con independencia de quien pidió la revisión |
+
+**Lo que separa a los dos no es el conocimiento técnico. Es el criterio y la evidencia.** Un técnico excelente sin criterio citado produce una opinión; un auditor con criterio produce un hallazgo exigible.
+
+**Preguntas para la sesión**
+
+| Pregunta | Qué debe contener una buena respuesta |
+|---|---|
+| ¿Puede haber hallazgo sin criterio? | No. Sin criterio solo hay una observación personal. El criterio puede ser una norma, un contrato o **la propia política de la empresa** |
+| El gerente dice: «pero eso siempre se ha hecho así». ¿Cambia algo? | No cambia la condición. Puede explicar la **causa** —práctica consolidada sin revisión— y eso mejora la recomendación |
+| ¿Auditar es buscar culpables? | No. El informe se dirige a controles y procesos, no a personas. Nombrar personas invade la función de gestión y compromete la independencia |
+## Qué es proteger la información
+
+**Información ≠ dato ≠ sistema.** El objeto protegido es la *información*, con independencia del soporte — base de datos, papel, conversación, respaldo en cinta o mensajería. Por eso la norma se llama sistema de gestión de la *seguridad de la información* y no «seguridad informática».
 
 **Propiedades a preservar.** La ISO/IEC 27001:2022 conserva las tres propiedades clásicas y la práctica profesional añade dos más:
 
@@ -120,7 +151,25 @@ Riesgo de auditoría = Riesgo inherente × Riesgo de control × Riesgo de detecc
 
 El auditor no puede modificar los dos primeros; sí puede reducir el tercero ampliando la muestra, cambiando la técnica o aumentando la profundidad de la prueba.
 
-## Cómo se organiza el curso como un encargo de auditoría (15 min)
+
+**Ejemplo trabajado — los tres pilares sobre un caso.** Una distribuidora guarda en un servidor la lista de precios negociados con cada cliente.
+
+| Pilar | Qué significa aquí | Cómo se rompe | Control que lo sostiene |
+|---|---|---|---|
+| **Confidencialidad** | Solo Comercial y Gerencia ven los precios de cada cliente | Un vendedor descarga la lista completa antes de renunciar y se la lleva a la competencia | Permisos por cliente, no por carpeta; registro de descargas masivas |
+| **Integridad** | El precio que ve el vendedor es el que Gerencia autorizó | Alguien edita la hoja y aplica un descuento no aprobado | Datos maestros con aprobación dual y bitácora de cambios |
+| **Disponibilidad** | La lista está accesible cuando el vendedor cotiza | El servidor cae en fin de mes y no se puede cotizar | Respaldo probado y tiempo de recuperación acordado |
+
+> **Los tres compiten entre sí.** Cifrar la lista mejora la confidencialidad y empeora la disponibilidad si se pierde la clave. Replicarla a tres servidores mejora la disponibilidad y multiplica los puntos donde se puede filtrar. **Diseñar controles es decidir ese equilibrio, no maximizar los tres.**
+
+**Preguntas para la sesión**
+
+| Pregunta | Qué debe contener una buena respuesta |
+|---|---|
+| Un hospital cifra las historias clínicas con una clave que solo conoce el jefe de sistemas. ¿Mejoró la seguridad? | Mejoró la confidencialidad y creó un riesgo grave de disponibilidad e integridad: si esa persona no está, la información es irrecuperable. Es un punto único de falla disfrazado de control |
+| ¿Cuál de los tres pilares suele ser el más crítico en un hospital? ¿Y en un banco? | En el hospital, disponibilidad e integridad: una historia clínica no disponible o alterada puede costar una vida. En el banco, integridad y confidencialidad del saldo y del dato del cliente |
+| ¿Es la trazabilidad un cuarto pilar? | Se discute. Lo defendible es que **sostiene a los tres**: sin registro de quién hizo qué, no se puede demostrar que ninguno se preservó |
+## Cómo se organiza el curso como un encargo de auditoría
 
 **El curso es un encargo real de auditoría.** Los equipos (4 a 5 integrantes) reciben esta hoja de ruta:
 
@@ -138,9 +187,9 @@ El auditor no puede modificar los dos primeros; sí puede reducir el tercero amp
 
 El docente aprueba o rechaza en la Semana 2. Si el acceso no se concreta, el equipo migra al **caso simulado de respaldo** (`ANEXO-CASO-SIMULADO.md`) sin perder continuidad.
 
-**Ética y confidencialidad.** Antes de cualquier prueba técnica se firman dos documentos: el **acta de acuerdo y alcance** (qué se puede probar, cuándo y sobre qué activos) y el **acuerdo de confidencialidad**. El Código de Ética Profesional de ISACA obliga al auditor a mantener la confidencialidad de la información obtenida y a no usarla en beneficio propio. **Ninguna prueba técnica se ejecuta sobre un sistema de terceros sin autorización escrita**: en el Perú, el acceso no autorizado a un sistema informático está tipificado en la Ley 30096, Ley de Delitos Informáticos.
+**Ética y confidencialidad.** Antes de cualquier prueba técnica se firman dos documentos. El **acta de acuerdo y alcance** (qué se puede probar, cuándo y sobre qué activos) y el **acuerdo de confidencialidad**. El Código de Ética Profesional de ISACA obliga al auditor a mantener la confidencialidad de la información obtenida y a no usarla en beneficio propio. **Ninguna prueba técnica se ejecuta sobre un sistema de terceros sin autorización escrita** — en el Perú, el acceso no autorizado a un sistema informático está tipificado en la Ley 30096, Ley de Delitos Informáticos.
 
-## Cierre y encuadre metodológico (5 min)
+## Cierre y encuadre metodológico
 
 - La Unidad I es **puro laboratorio técnico**. Se audita con herramientas, no con diapositivas.
 - La Unidad II es **puro plan**. Aprender a planificar es lo que separa a un auditor de un operador de herramientas.

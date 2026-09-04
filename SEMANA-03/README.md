@@ -13,7 +13,7 @@
 
 <p align="center">
   <strong>SI-084 · Auditoría de Sistemas</strong><br>
-  4 horas académicas de 50 min · aula: teoría 60 + dinámica 35 + cierre 5 · laboratorio: taller 60 + avance asistido 40
+  4 horas académicas de 50 min · 100 min de teoría con la dinámica incluida en aula · 100 min de taller en laboratorio
 </p>
 
 ---
@@ -28,7 +28,7 @@
 | **Prerrequisito** | SI-985 Gestión de la Configuración de Software |
 | **Unidad** | I — Seguridad de la Información en Auditoría de Sistemas |
 | **Semana** | 03 de 17 |
-| **Duración** | 4 horas académicas de 50 min · aula: teoría 60 + dinámica 35 + cierre 5 · laboratorio: taller 60 + avance asistido 40 |
+| **Duración** | 4 horas académicas de 50 min · 100 min de teoría con la dinámica incluida en aula · 100 min de taller en laboratorio |
 | **Resultados de aprendizaje** | **RA1** Analiza e interpreta los conceptos y terminología de Auditoría de Sistemas · **RA2** Evalúa la seguridad de la información en Auditoría de Sistemas |
 | **Atributos del graduado** | AG-I08 Análisis de Problemas (CD2 y CD3, nivel 4) · AG-I11 Uso de Herramientas (CD2, nivel 4) |
 

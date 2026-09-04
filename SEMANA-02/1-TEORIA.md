@@ -14,6 +14,16 @@
 - Los principios que sostienen el diseño de controles.
 - Roles y responsabilidades en seguridad de la información.
 
+## Distribución del tiempo
+
+| Bloque | Minutos |
+|---|---|
+| Información y seguridad de la información | 15 |
+| Los principios que sostienen el diseño de controles | 20 |
+| Roles y responsabilidades en seguridad de la información | 25 |
+| Cierre | 5 |
+| **Total de la sesión de aula** | **65** |
+
 ## Mapa de la sesión
 
 ```mermaid
@@ -44,9 +54,9 @@ flowchart TD
 
 ---
 
-## Información y seguridad de la información (15 min)
+## Información y seguridad de la información
 
-**La información es el activo; la seguridad es una propiedad de su tratamiento.** Confundirlas produce el error más común en las organizaciones peruanas: comprar un cortafuegos y declarar que «ya se implementó la 27001».
+**La información es el activo; la seguridad es una propiedad de su tratamiento.** Confundirlas produce el error más común en las organizaciones peruanas. Comprar un cortafuegos y declarar que «ya se implementó la 27001».
 
 | Dimensión | Información | Seguridad de la información |
 |---|---|---|
@@ -55,7 +65,7 @@ flowchart TD
 | **Cómo se mide** | Por su valor, criticidad y clasificación | Por la efectividad de los controles y el riesgo residual |
 | **Error típico** | Creer que la información es de TI | Creer que la seguridad es un producto que se compra |
 
-**Ciclo de vida de la información.** El auditor lo recorre entero porque cada etapa tiene controles distintos: **creación → clasificación → almacenamiento → uso → compartición → archivo → destrucción**. Una organización que cifra su base de datos pero envía los reportes por correo personal, o que no destruye los respaldos vencidos, tiene el control roto exactamente en las etapas que no miró.
+**Ciclo de vida de la información.** El auditor lo recorre entero porque cada etapa tiene controles distintos — **creación → clasificación → almacenamiento → uso → compartición → archivo → destrucción**. Una organización que cifra su base de datos pero envía los reportes por correo personal, o que no destruye los respaldos vencidos, tiene el control roto exactamente en las etapas que no miró.
 
 **Clasificación de la información.** La ISO/IEC 27001:2022 exige, en el control **A.5.12 Classification of information**, que la información se clasifique según los requisitos de confidencialidad, integridad, disponibilidad y los requisitos legales. Un esquema operativo de cuatro niveles:
 
@@ -68,7 +78,7 @@ flowchart TD
 
 En el Perú, la Ley 29733 de Protección de Datos Personales y su reglamento fuerzan a incorporar una dimensión adicional. Los **datos sensibles** (origen étnico, salud, biometría, ingresos económicos, convicciones) exigen consentimiento expreso y medidas de seguridad reforzadas, con independencia de la clasificación comercial que la empresa les asigne.
 
-## Los principios que sostienen el diseño de controles (20 min)
+## Los principios que sostienen el diseño de controles
 
 Estos principios no son eslóganes. Cada uno es una **prueba de auditoría concreta**.
 
@@ -84,7 +94,7 @@ Estos principios no son eslóganes. Cada uno es una **prueba de auditoría concr
 | **Mediación completa** | Cada acceso se verifica, no solo el primero | Comprobar si la autorización se revalida o se cachea indefinidamente |
 | **Economía del mecanismo** | Un control simple es un control auditable | Evaluar si alguien en la organización entiende el control completo |
 
-**Segregación de funciones: el control que más hallazgos produce.** En una organización pequeña —y casi todas las MYPE peruanas lo son— la SoD perfecta es imposible: no hay personal suficiente. Ese no es el hallazgo. El hallazgo es la **ausencia de controles compensatorios**: cuando una persona necesariamente concentra funciones incompatibles, la organización debe implementar revisión independiente posterior, bitácora inalterable y aprobación de segundo nivel por excepción. Reportar «no hay segregación de funciones» en una empresa de cuatro personas sin proponer el control compensatorio es un informe inútil.
+**Segregación de funciones. El control que más hallazgos produce.** En una organización pequeña —y casi todas las MYPE peruanas lo son— la SoD perfecta es imposible. No hay personal suficiente. Ese no es el hallazgo. El hallazgo es la **ausencia de controles compensatorios** — cuando una persona necesariamente concentra funciones incompatibles, la organización debe implementar revisión independiente posterior, bitácora inalterable y aprobación de segundo nivel por excepción. Reportar «no hay segregación de funciones» en una empresa de cuatro personas sin proponer el control compensatorio es un informe inútil.
 
 Combinaciones tóxicas clásicas que el auditor busca siempre:
 
@@ -96,9 +106,30 @@ Combinaciones tóxicas clásicas que el auditor busca siempre:
 | Administrar usuarios | Operar la transacción | Autoconcesión de privilegios |
 | Custodiar el activo | Registrar el activo | Faltante encubierto contablemente |
 
-## Roles y responsabilidades en seguridad de la información (25 min)
 
-**El error estructural.** Cuando la responsabilidad de la seguridad se concentra en TI, ocurre un conflicto irresoluble: quien opera el sistema decide también qué riesgo se acepta sobre él. La ISO/IEC 27001:2022 lo resuelve en su cláusula 5.3 exigiendo que la dirección asigne responsabilidades y autoridades de forma explícita.
+**Ejemplo trabajado — los principios aplicados a un solo caso.** Una cooperativa contrata a un analista de créditos.
+
+| Principio | Cómo se aplica aquí | Qué pasa si se ignora |
+|---|---|---|
+| **Mínimo privilegio** | Ve los expedientes de los socios de su cartera, no los 21 400 | Un analista descargó 1 900 expedientes que no le correspondían durante cuatro meses |
+| **Necesidad de conocer** | Ve el historial crediticio, no los datos de salud del legajo laboral | Datos sensibles accesibles sin relación con la función |
+| **Segregación de funciones** | Evalúa el crédito, pero no lo aprueba ni desembolsa | Un solo empleado origina, aprueba y transfiere |
+| **Defensa en profundidad** | Permisos, más registro de accesos, más revisión mensual | Un solo control fallando deja el activo descubierto |
+| **Falla segura** | Si el sistema de permisos no responde, **niega** el acceso | Ante un fallo, el sistema abre todo «para no detener la operación» |
+| **Responsabilidad individual** | Cada acceso queda registrado con usuario nominal | Cuentas compartidas: nadie responde por nada |
+
+> **Fíjese en el caso real.** El acceso indebido a 1 900 expedientes no se detectó por un control. Se detectó por una denuncia interna. Fallaron el mínimo privilegio *y* la defensa en profundidad, porque el servidor de archivos **no registraba accesos de lectura**.
+
+**Preguntas para la sesión**
+
+| Pregunta | Qué debe contener una buena respuesta |
+|---|---|
+| ¿Por qué «falla segura» es tan poco popular en las organizaciones? | Porque cuando el control falla, la operación se detiene. La alternativa —abrir todo— es cómoda y es exactamente lo que un atacante provoca a propósito |
+| Una empresa de 6 personas no puede segregar funciones. ¿Se abandona el principio? | No. Se sustituye por un control **compensatorio** documentado: revisión posterior por un tercero, con registro. Y se declara por qué se compensó |
+| ¿Registrar accesos de lectura es exagerado? | Depende del dato. Para datos sensibles no lo es: sin ese registro, una fuga por lectura es indetectable e indemostrable |
+## Roles y responsabilidades en seguridad de la información
+
+**El error estructural.** Cuando la responsabilidad de la seguridad se concentra en TI, ocurre un conflicto irresoluble. Quien opera el sistema decide también qué riesgo se acepta sobre él. La ISO/IEC 27001:2022 lo resuelve en su cláusula 5.3 exigiendo que la dirección asigne responsabilidades y autoridades de forma explícita.
 
 | Rol | Responsabilidad primaria | Lo que **no** le corresponde |
 |---|---|---|
@@ -112,11 +143,31 @@ Combinaciones tóxicas clásicas que el auditor busca siempre:
 | **Usuario final** | Cumplir la política, reportar incidentes | Compartir sus credenciales «por urgencia» |
 | **Oficial de Protección de Datos** | Velar por el cumplimiento de la Ley 29733 | Autorizar tratamientos sin base legal |
 
-**La matriz RACI aplicada al SGSI.** El auditor no pregunta «¿quién es el responsable de la seguridad?». Pregunta, para cada control concreto: *¿quién lo ejecuta (R), quién responde por su resultado (A), a quién se consulta (C) y a quién se informa (I)?* Cuando dos personas figuran como **A** para el mismo control, nadie responde.
+**La matriz RACI aplicada al SGSI (Sistema de Gestión de Seguridad de la Información).** El auditor no pregunta «¿quién es el responsable de la seguridad?». Pregunta, para cada control concreto. *¿Quién lo ejecuta (R), quién responde por su resultado (A), a quién se consulta (C) y a quién se informa (I)?* Cuando dos personas figuran como **A** para el mismo control, nadie responde.
 
 **El caso peruano en el sector público.** El Decreto Supremo 029-2021-PCM, reglamento de la Ley de Gobierno Digital (Decreto Legislativo 1412), y las resoluciones de la Secretaría de Gobierno y Transformación Digital establecen la figura del **Líder de Gobierno Digital** y la del **Oficial de Seguridad de la Información**, con responsabilidades formalmente separadas de la jefatura de la Oficina de Tecnologías de la Información. Cuando en una entidad pública el jefe de TI es simultáneamente el Oficial de Seguridad, existe un hallazgo de cumplimiento normativo, no solo de buena práctica.
 
-## Cierre (5 min)
+
+**Ejemplo trabajado — quién responde cuando algo sale mal.** Se filtran datos de clientes desde una carpeta compartida mal configurada.
+
+| Rol | Qué le correspondía | Qué se le puede exigir |
+|---|---|---|
+| **Propietario del activo** — el jefe de Comercial | Definir quién debe acceder y con qué nivel | Que declare y revise periódicamente la lista de accesos autorizados. **No se le exige configurar el permiso** |
+| **Custodio** — Tecnologías de la Información | Implantar técnicamente lo que el propietario definió | Que la configuración corresponda a lo autorizado, y que exista registro |
+| **Usuario** | Usar el acceso para lo que se le otorgó | Que no comparta su credencial ni extraiga información fuera de su función |
+| **Oficial de seguridad** | Definir la política y verificar su cumplimiento | Que exista la política, que se haya difundido y que se revise |
+| **Alta dirección** | Asignar recursos y aprobar el apetito de riesgo | Que haya aprobado la política y provisto los medios |
+
+> **El error más común en los informes de estudiantes** es atribuirle todo a TI. Si el jefe de Comercial nunca definió quién debía acceder, el custodio configuró en el vacío. **El hallazgo es sobre la ausencia de propietario declarado**, no sobre la configuración.
+
+**Preguntas para la sesión**
+
+| Pregunta | Qué debe contener una buena respuesta |
+|---|---|
+| ¿Puede el jefe de sistemas ser propietario de los datos de clientes? | No debería. El propietario es quien conoce el uso del negocio y decide quién accede. Si TI es propietario **y** custodio, no hay quien controle a quien controla |
+| ¿Qué se le exige a la alta dirección en un hallazgo de seguridad? | Haber aprobado una política, asignado responsabilidades y provisto recursos. Su responsabilidad es de gobierno, no de configuración |
+| ¿Sirve una política de seguridad que nadie leyó? | Como criterio de auditoría, sí: existe y es exigible. Como control, no: sin difusión ni verificación, no opera |
+## Cierre
 
 La pregunta que sintetiza la sesión — **si mañana ocurre una fuga de datos en esta organización, ¿quién firma la respuesta al regulador?** Si la respuesta es «el jefe de sistemas», la organización tiene un problema de gobierno, no de tecnología.
 

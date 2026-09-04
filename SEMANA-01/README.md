@@ -13,7 +13,7 @@
 
 <p align="center">
   <strong>SI-084 · Auditoría de Sistemas</strong><br>
-  4 horas académicas de 50 min · aula: teoría 60 + dinámica 35 + cierre 5 · laboratorio: taller 60 + avance asistido 40
+  4 horas académicas de 50 min · 100 min de teoría con la dinámica incluida en aula · 100 min de taller en laboratorio
 </p>
 
 ---
@@ -28,7 +28,7 @@
 | **Prerrequisito** | SI-985 Gestión de la Configuración de Software |
 | **Unidad** | I — Seguridad de la Información en Auditoría de Sistemas |
 | **Semana** | 01 de 17 |
-| **Duración** | 4 horas académicas de 50 min · aula: teoría 60 + dinámica 35 + cierre 5 · laboratorio: taller 60 + avance asistido 40 |
+| **Duración** | 4 horas académicas de 50 min · 100 min de teoría con la dinámica incluida en aula · 100 min de taller en laboratorio |
 | **Resultados de aprendizaje** | **RA1** Analiza e interpreta los conceptos y terminología de Auditoría de Sistemas · **RA2** Evalúa la seguridad de la información en Auditoría de Sistemas |
 | **Atributos del graduado** | AG-I08 Análisis de Problemas (CD2, nivel 4) · AG-I11 Uso de Herramientas (CD1, nivel 4) |
 
@@ -83,7 +83,7 @@ flowchart LR
 
 ## Atributos del Graduado · presentación del assessment
 
-> En esta primera sesión se presenta el **Atributo del Graduado** que el curso mide para el Plan de Assessment de la Escuela, junto con su rúbrica. Toma diez minutos y evita el malentendido más común: creer que es una nota más.
+> En esta primera sesión se presenta el **Atributo del Graduado** que el curso mide para el Plan de Assessment de la Escuela, junto con su rúbrica. Toma diez minutos y evita el malentendido más común. Creer que es una nota más.
 
 | | |
 |---|---|
@@ -94,7 +94,7 @@ flowchart LR
 | **Efecto en tu calificación** | **Ninguno.** Mide el programa, no al estudiante. Se registra aparte de las actas |
 | **Dónde consultarlo** | [`ASSESSMENT/`](../ASSESSMENT/) · [rúbrica](../ASSESSMENT/RUBRICAS-AG.md) · [mapa](../ASSESSMENT/MAPA-AG.md) |
 
-**Por qué en este curso.** Auditar es la actividad de la ingeniería donde el conflicto ético es cotidiano: se accede a información que la organización preferiría no mostrar, se depende del auditado y se reporta lo que incomoda. Este curso es además el **punto de medición terminal** del atributo para el programa, por estar en el ciclo X sobre una empresa real.
+**Por qué en este curso.** Auditar es la actividad de la ingeniería donde el conflicto ético es cotidiano. Se accede a información que la organización preferiría no mostrar, se depende del auditado y se reporta lo que incomoda. Este curso es además el **punto de medición terminal** del atributo para el programa, por estar en el ciclo X sobre una empresa real.
 
 ## Preparación para la Semana 02
 

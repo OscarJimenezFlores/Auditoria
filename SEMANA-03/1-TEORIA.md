@@ -15,6 +15,16 @@
 - Gestión del riesgo de seguridad de la información.
 - Software libre para el tratamiento del riesgo.
 
+## Distribución del tiempo
+
+| Bloque | Minutos |
+|---|---|
+| La familia de normas ISO/IEC 27000 | 15 |
+| Las cláusulas certificables 4 a 10 | 15 |
+| Gestión del riesgo de seguridad de la información | 20 |
+| Software libre para el tratamiento del riesgo | 15 |
+| **Total de la sesión de aula** | **65** |
+
 ## Mapa de la sesión
 
 ```mermaid
@@ -46,7 +56,7 @@ flowchart TD
 
 ---
 
-## La familia de normas ISO/IEC 27000 (15 min)
+## La familia de normas ISO/IEC 27000
 
 Un error frecuente es citar «la ISO 27001» para todo. La familia está deliberadamente dividida por función, y el auditor cita la norma correcta:
 
@@ -63,11 +73,11 @@ Un error frecuente es citar «la ISO 27001» para todo. La familia está deliber
 | **ISO/IEC 27035** | Gestión de incidentes | Auditar la capacidad de respuesta |
 | **ISO 22301:2019** | Continuidad del negocio | Auditar el BCP (Unidad III) |
 
-**Cambio estructural de la edición 2022.** El Anexo A pasó de 114 controles en 14 dominios (edición 2013) a **93 controles en 4 temas**: *Organizacionales* (A.5, 37 controles), *Personas* (A.6, 8), *Físicos* (A.7, 14) y *Tecnológicos* (A.8, 34). Se incorporaron 11 controles nuevos, entre ellos *Threat intelligence* (A.5.7), *Information security for use of cloud services* (A.5.23), *ICT readiness for business continuity* (A.5.30), *Configuration management* (A.8.9), *Data masking* (A.8.11), *Data leakage prevention* (A.8.12), *Monitoring activities* (A.8.16), *Web filtering* (A.8.23) y *Secure coding* (A.8.28).
+**Cambio estructural de la edición 2022.** El Anexo A pasó de 114 controles en 14 dominios (edición 2013) a **93 controles en 4 temas** — *Organizacionales* (A.5, 37 controles), *Personas* (A.6, 8), *Físicos* (A.7, 14) y *Tecnológicos* (A.8, 34). Se incorporaron 11 controles nuevos, entre ellos *Threat intelligence* (A.5.7), *Information security for use of cloud services* (A.5.23), *ICT readiness for business continuity* (A.5.30), *Configuration management* (A.8.9), *Data masking* (A.8.11), *Data leakage prevention* (A.8.12), *Monitoring activities* (A.8.16), *Web filtering* (A.8.23) y *Secure coding* (A.8.28).
 
-**En el Perú.** La NTP-ISO/IEC 27001 es la adopción nacional de la norma. La **Resolución de Secretaría de Gobierno y Transformación Digital n.° 003-2023-PCM/SGTD** dispone que las entidades públicas usen obligatoriamente la NTP-ISO/IEC 27001 **vigente**, que a la fecha corresponde a la edición **2022**. Antecedente: la Resolución Ministerial 004-2016-PCM había impuesto la NTP ISO/IEC 27001:2014 a las entidades del Sistema Nacional de Informática. Para el auditor esto significa que, en el sector público peruano, un incumplimiento del SGSI **no es una desviación de buena práctica: es un incumplimiento normativo con responsabilidad administrativa**.
+**En el Perú.** La NTP-ISO/IEC 27001 es la adopción nacional de la norma. La **Resolución de Secretaría de Gobierno y Transformación Digital n.° 003-2023-PCM/SGTD** dispone que las entidades públicas usen obligatoriamente la NTP-ISO/IEC 27001 **vigente**, que a la fecha corresponde a la edición **2022**. **Antecedente.** La Resolución Ministerial 004-2016-PCM había impuesto la NTP ISO/IEC 27001:2014 a las entidades del Sistema Nacional de Informática. Para el auditor esto significa que, en el sector público peruano, un incumplimiento del SGSI (Sistema de Gestión de Seguridad de la Información) **no es una desviación de buena práctica. Es un incumplimiento normativo con responsabilidad administrativa**.
 
-## Las cláusulas certificables 4 a 10 (15 min)
+## Las cláusulas certificables 4 a 10
 
 El Anexo A recibe toda la atención, pero la mayoría de las no conformidades mayores se levantan en las cláusulas 4 a 10:
 
@@ -82,9 +92,9 @@ El Anexo A recibe toda la atención, pero la mayoría de las no conformidades ma
 | **9** Evaluación | Seguimiento, medición, **auditoría interna** y **revisión por la dirección** | Programa de auditoría interna, informes, acta de revisión por la dirección |
 | **10** Mejora | No conformidades, acciones correctivas, mejora continua | Registro de no conformidades con análisis de causa raíz |
 
-**La Declaración de Aplicabilidad (SoA)** es el documento más auditado del SGSI: lista los 93 controles del Anexo A y, para cada uno, declara si aplica, la justificación de inclusión o exclusión, y el estado de implementación. **Un control excluido sin justificación trazable al análisis de riesgos es una no conformidad mayor inmediata.**
+**La Declaración de Aplicabilidad (SoA)** es el documento más auditado del SGSI — lista los 93 controles del Anexo A y, para cada uno, declara si aplica, la justificación de inclusión o exclusión, y el estado de implementación. **Un control excluido sin justificación trazable al análisis de riesgos es una no conformidad mayor inmediata.**
 
-## Gestión del riesgo de seguridad de la información (20 min)
+## Gestión del riesgo de seguridad de la información
 
 **El proceso (ISO/IEC 27005:2022 + ISO 31000).**
 
@@ -134,7 +144,7 @@ En este curso se usa el **enfoque basado en activos** por su trazabilidad direct
 | 4 Mayor | Interrupción > 24 h; pérdida económica significativa; incumplimiento contractual |
 | 5 Catastrófico | Continuidad comprometida; sanción del regulador; daño reputacional irreversible |
 
-**Riesgo inherente vs. riesgo residual.** El riesgo inherente se evalúa *ignorando* los controles existentes; el residual, *después* de considerarlos y **verificar que operan**. El error de auditoría más frecuente es tomar por bueno un control documentado que nunca se probó: eso convierte el riesgo residual en una ficción.
+**Riesgo inherente vs. riesgo residual.** El riesgo inherente se evalúa *ignorando* los controles existentes; el residual, *después* de considerarlos y **verificar que operan**. El error de auditoría más frecuente es tomar por bueno un control documentado que nunca se probó. Eso convierte el riesgo residual en una ficción.
 
 **Las cuatro decisiones de tratamiento.**
 
@@ -147,7 +157,41 @@ En este curso se usa el **enfoque basado en activos** por su trazabilidad direct
 
 > **Regla de auditoría.** Un riesgo «aceptado» sin firma del dueño del riesgo es en realidad un riesgo **ignorado**, y así debe reportarse.
 
-## Software libre para el tratamiento del riesgo (15 min)
+
+**Ejemplo trabajado — de la amenaza al riesgo residual.** Una municipalidad con el servidor de rentas sin soporte desde hace dos años.
+
+| Paso | Contenido |
+|---|---|
+| **Activo** | Sistema de rentas y catastro. Sostiene la recaudación de tributos municipales |
+| **Amenaza** | Explotación de una vulnerabilidad no parcheada por falta de soporte del proveedor |
+| **Vulnerabilidad** | Versión sin actualizaciones desde hace 24 meses; contrato de soporte vencido |
+| **Probabilidad** | **Alta**. Existen exploits públicos para esa versión y el servicio está expuesto |
+| **Impacto** | **Alto**. En la campaña de amnistía se recauda el 40 % del año |
+| **Riesgo inherente** | **Extremo** |
+| **Controles existentes** | Respaldo diario, sin prueba de restauración. Cortafuegos perimetral |
+| **Riesgo residual** | **Alto**. El respaldo limita la pérdida de datos, no evita la indisponibilidad ni la fuga |
+| **Tratamiento** | Mitigar: renovar soporte y aplicar parches. Plazo 60 días |
+| **Riesgo residual esperado** | Medio |
+| **Quién acepta el remanente** | Gerencia Municipal, por escrito |
+
+> **La pregunta que separa un registro de riesgos útil de uno decorativo.** ¿Quién firmó la aceptación del riesgo residual? Si nadie, el riesgo no está aceptado. Está **ignorado**.
+
+**Ejemplo trabajado — cómo se rompe una matriz de riesgo mal hecha.** El registro de la organización dice:
+
+| Riesgo | Probabilidad | Impacto | Nivel |
+|---|---|---|---|
+| Caída del sistema principal | Media | Alto | **Medio** |
+
+Está mal, y hay que saber por qué. Media × Alto no puede dar Medio si la propia escala de la organización define Alto para esa combinación. **El nivel se asignó a ojo, no con la matriz.** Es un hallazgo. El método declarado no se aplica.
+
+**Preguntas para la sesión**
+
+| Pregunta | Qué debe contener una buena respuesta |
+|---|---|
+| ¿Se puede auditar un registro de riesgos sin ser experto en el negocio? | Sí. Se audita el **método**: ¿hay escala definida? ¿se aplicó de forma consistente? ¿los tratamientos tienen responsable y plazo? ¿quién aceptó el residual? |
+| Un riesgo con probabilidad Baja e impacto Alto, ¿se trata o se acepta? | Depende del apetito declarado. Lo auditable es que **exista una decisión explícita y firmada**, no cuál sea |
+| ¿Transferir un riesgo con un seguro lo elimina? | No. Transfiere la consecuencia económica. La interrupción, la sanción del regulador y el daño reputacional siguen siendo del titular |
+## Software libre para el tratamiento del riesgo
 
 | Herramienta | Licencia | Fortaleza | Limitación |
 |---|---|---|---|
@@ -157,7 +201,7 @@ En este curso se usa el **enfoque basado en activos** por su trazabilidad direct
 | **OpenVAS / Greenbone Community Edition** | GPL | Detección técnica de vulnerabilidades con CVE y CVSS | Alimenta el riesgo técnico, no es un GRC |
 | **Hoja de cálculo con método documentado** | LibreOffice Calc | Trazabilidad total, cero dependencias | No escala ni controla concurrencia |
 
-**Criterio de selección para el auditor:** la herramienta importa mucho menos que la **trazabilidad del método**. Un registro de riesgos en LibreOffice con escalas definidas, criterio de aceptación aprobado y firmas del dueño del riesgo es auditable; un GRC caro con escalas por defecto y sin firmas, no lo es.
+**Criterio de selección para el auditor.** La herramienta importa mucho menos que la **trazabilidad del método**. Un registro de riesgos en LibreOffice con escalas definidas, criterio de aceptación aprobado y firmas del dueño del riesgo es auditable; un GRC caro con escalas por defecto y sin firmas, no lo es.
 
 ---
 

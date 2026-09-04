@@ -254,11 +254,11 @@ El curso contribuye al **Plan de Assessment de la Escuela**, que mide los once A
 
 Por estar en el ciclo X y sobre una empresa real, este curso es el **punto de medición terminal** del AG-I02 para el programa. La captura individual es la sustentación de la Semana 17.
 
-Todo el instrumental está en [`ASSESSMENT/`](ASSESSMENT/): el [mapa del atributo semana a semana](ASSESSMENT/MAPA-AG.md), la [rúbrica](ASSESSMENT/RUBRICAS-AG.md), la [ficha de evidencia](ASSESSMENT/PLANTILLA-EVIDENCIA-AG.md) que se llena en cada captura, el registro por estudiante y la [plantilla del informe de assessment](ASSESSMENT/PLANTILLA-INFORME-ASSESSMENT.md) del ciclo.
+Todo el instrumental está en [`ASSESSMENT/`](ASSESSMENT/) — el [mapa del atributo semana a semana](ASSESSMENT/MAPA-AG.md), la [rúbrica](ASSESSMENT/RUBRICAS-AG.md), la [ficha de evidencia](ASSESSMENT/PLANTILLA-EVIDENCIA-AG.md) que se llena en cada captura, el registro por estudiante y la [plantilla del informe de assessment](ASSESSMENT/PLANTILLA-INFORME-ASSESSMENT.md) del ciclo.
 
 ## Glosario técnico
 
-Todo término, sigla y norma que aparece en el curso está definido en el [**glosario técnico**](GLOSARIO.md). Los términos en inglés se conservan cuando así se usan en el trabajo profesional: es como se encuentran en la documentación y en el código.
+Todo término, sigla y norma que aparece en el curso está definido en el [**glosario técnico**](GLOSARIO.md). Los términos en inglés se conservan cuando así se usan en el trabajo profesional. Es como se encuentran en la documentación y en el código.
 
 ## Bibliografía y fuentes del curso
 

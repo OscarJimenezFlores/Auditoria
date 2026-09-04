@@ -35,7 +35,7 @@
    Tesorería                                        RR. HH.
 ```
 
-**Hechos de gobierno relevantes para la auditoría:**
+**Hechos de gobierno relevantes para la auditoría.**
 
 - **No existe comité de TI.** Las decisiones tecnológicas las toma el Gerente de Administración con el Jefe de TI.
 - El **Jefe de TI reporta a la Gerencia de Administración**; su presupuesto compite con gasto corriente.
@@ -84,7 +84,7 @@
 | Analítica de datos | 30 000 | 0 | Transformar |
 | **Total** | **790 000** | **755 000** | |
 
-> **Contraste para el hallazgo de gobierno:** el plan estratégico declara la digitalización del canal como prioridad y el presupuesto del año en curso **reduce** «Canal digital» en 56 % y elimina «Transformar».
+> **Contraste para el hallazgo de gobierno.** El plan estratégico declara la digitalización del canal como prioridad y el presupuesto del año en curso **reduce** «Canal digital» en 56 % y elimina «Transformar».
 
 ## 6. Inversiones cerradas (para la prueba de Val IT, Semana 14)
 
@@ -216,7 +216,7 @@ for f in ["poblacion_pagos.csv","empleados.csv","proveedores.csv","usuarios_erp.
     print("  ·", f)
 ```
 
-> **Incoherencias del BIA que los equipos deben detectar en la Semana 15:** en «Facturación» el RTO (12 h) supera el MTPD (8 h); en «Pago de planilla» y «Portal B2B» ocurre lo mismo; varios RPO declarados (1 h, 4 h) son menores que la frecuencia real de respaldo (24 h, 168 h); y tres actividades carecen de MBCO.
+> **Incoherencias del BIA que los equipos deben detectar en la Semana 15.** En «Facturación» el RTO (12 h) supera el MTPD (8 h); en «Pago de planilla» y «Portal B2B» ocurre lo mismo; varios RPO declarados (1 h, 4 h) son menores que la frecuencia real de respaldo (24 h, 168 h); y tres actividades carecen de MBCO.
 
 ## 8. Documentos del caso que el docente entrega por semana
 
