@@ -50,7 +50,7 @@ RIESGO 2  el cobrador recibe efectivo en ruta
 | **C** | Propuesta de pago en hoja de cálculo | Se agregan a la hoja pagos que nunca pasaron por el ERP ni por el cruce de tres vías | Aprobación de la propuesta por correo del Jefe de Administración | Compensatorio, débil | **Válidos** y **completos** |
 | **D** | Recepción de mercadería | El almacenero registra sistemáticamente hasta un 5 % de más y la diferencia no se investiga | Tolerancia del 5 % con aprobación por encima | Preventivo, aplicación | **Exactos** |
 | **E** | Registro de la factura | Se paga una factura que no corresponde a una compra recibida | Cruce automático de tres vías | Preventivo, automático, aplicación | **Válidos** y **exactos** |
-| **F** | Ejecución del pago en banca | Tesorería paga sola | Doble clave: la suya y el token físico que guarda el Jefe de Administración | Preventivo, ITGC de accesos | **Autorizados** |
+| **F** | Ejecución del pago en banca | Tesorería paga sola | **Doble clave.** La suya y el token físico que guarda el Jefe de Administración | Preventivo, ITGC de accesos | **Autorizados** |
 
 **Los tres que debe traer un buen trabajo son A, B y C.** El **B** es el riesgo sin control y es el que se pide expresamente. El **D**, **E** y **F** son correctos pero de menor severidad.
 
@@ -75,11 +75,11 @@ RIESGO 2  el cobrador recibe efectivo en ruta
 
 | Lo que dirán | Cómo se resuelve |
 |---|---|
-| «El cruce de tres vías está bien, no es hallazgo.» | Correcto: el control está bien diseñado. El hallazgo no es sobre el control, es sobre el **entorno** que impide concluir sobre él. Es la distinción central de la semana |
+| «El cruce de tres vías está bien, no es hallazgo.» | **Correcto.** El control está bien diseñado. El hallazgo no es sobre el control, es sobre el **entorno** que impide concluir sobre él. Es la distinción central de la semana |
 | «La autoaprobación falla la eficacia operativa.» | No. El control **hace lo que dice que hace**: bloquea sobre S/ 20 000. Lo que está mal es el umbral, y el umbral es diseño |
 | «El riesgo del cambio de cuenta es muy rebuscado.» | Es el fraude BEC, y la teoría de la semana le dedica un ejemplo trabajado completo. Remítalos a él |
 | «La aprobación por correo del Jefe sirve como control.» | Pregunte qué aprobó exactamente. La hoja de cálculo cambia después de exportada y el correo no deja constancia de qué versión se aprobó. Es compensatorio y débil, no preventivo |
-| «El respaldo diario es un buen control.» | Correctivo, y **no se puede concluir efectivo**: la restauración se probó una vez en 2023. Un respaldo que nunca se restauró es una copia, no un control |
+| «El respaldo diario es un buen control.» | Correctivo, y **no se puede concluir efectivo**. La restauración se probó una vez en 2023. Un respaldo que nunca se restauró es una copia, no un control |
 
 ---
 
@@ -101,7 +101,7 @@ Repregunta única. **«¿Con qué dato del período lo dimensiona?»**
 |---|---|
 | La teoría se pasó | Pida dos riesgos en vez de tres, y que uno sea el que no tiene control |
 | Los equipos se atascan en la clasificación | Escriba en la pizarra los seis objetivos de aserción y déjelos ahí. Es lo que más cuesta |
-| Sobra tiempo | Pregunte cuál de los seis controles **no depende** de ningún ITGC. Respuesta, el F: el token físico está fuera del sistema, y por eso es el más confiable del proceso |
+| Sobra tiempo | Pregunte cuál de los seis controles **no depende** de ningún ITGC. **Respuesta, el F.** El token físico está fuera del sistema, y por eso es el más confiable del proceso |
 
 ---
 

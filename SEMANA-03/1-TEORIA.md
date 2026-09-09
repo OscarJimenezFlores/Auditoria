@@ -8,21 +8,35 @@
 
 ---
 
-## Qué se trabaja en esta sesión
+## La pregunta de esta sesión
 
-- La familia de normas ISO/IEC 27000.
-- Las cláusulas certificables 4 a 10.
-- Gestión del riesgo de seguridad de la información.
-- Software libre para el tratamiento del riesgo.
+Una organización presenta su registro de riesgos al comité. Tiene ochenta y cuatro filas, todas con probabilidad, impacto y un nivel calculado. Doce están en rojo. El comité aprueba el presupuesto de seguridad sobre esa base.
+
+El auditor pide la escala con la que se calificó la probabilidad. No existe escrita. Pide el sustento de tres calificaciones al azar. No hay ninguno. Las ochenta y cuatro filas se llenaron en una reunión de dos horas.
+
+> **La pregunta que ordena esta sesión.** *¿Qué distingue un registro de riesgos que sirve para decidir de uno que solo tiene aspecto de rigor?*
+
+## Antes de empezar
+
+| Lo que necesita traer | De dónde sale |
+|---|---|
+| Qué es un control y la tríada de la seguridad de la información | Semanas 01 y 02 |
+| Los principios de diseño de controles y sus pruebas | Semana 02 |
+| La noción de activo de información y de su dueño | Semana 02 |
+| Qué es una norma certificable | Se introduce hoy |
+
+> **Exploración (5 min), antes de cualquier definición.** El aula trabaja sobre el caso antes de cualquier definición y las respuestas quedan anotadas. *¿Sirve para algo ese registro? ¿Qué pediría usted primero, la escala o el sustento? ¿Puede el comité haber decidido bien por casualidad?* No se corrige nada todavía.
 
 ## Distribución del tiempo
 
-| Bloque | Minutos |
+| Momento | Minutos |
 |---|---|
-| La familia de normas ISO/IEC 27000 | 15 |
-| Las cláusulas certificables 4 a 10 | 15 |
-| Gestión del riesgo de seguridad de la información | 20 |
-| Software libre para el tratamiento del riesgo | 15 |
+| El registro de ochenta y cuatro riesgos y la exploración inicial | 10 |
+| **Bloque 1.** La familia ISO/IEC 27000 y qué norma se cita para qué | 12 |
+| **Bloque 2.** Las cláusulas certificables 4 a 10 | 13 |
+| **Bloque 3.** Gestión del riesgo de seguridad · con su microaplicación | 20 |
+| **Bloque 4.** Herramientas libres para el tratamiento del riesgo | 5 |
+| Cierre, respuesta a la pregunta de la sesión y puente a la dinámica | 5 |
 | **Total de la sesión de aula** | **65** |
 
 ## Mapa de la sesión
@@ -56,7 +70,9 @@ flowchart TD
 
 ---
 
-## La familia de normas ISO/IEC 27000
+## Bloque 1 · La familia de normas ISO/IEC 27000
+
+> **La pregunta del bloque.** *¿Por qué citar «la ISO 27001» para todo es un error de auditoría?*
 
 Un error frecuente es citar «la ISO 27001» para todo. La familia está deliberadamente dividida por función, y el auditor cita la norma correcta:
 
@@ -77,7 +93,11 @@ Un error frecuente es citar «la ISO 27001» para todo. La familia está deliber
 
 **En el Perú.** La NTP-ISO/IEC 27001 es la adopción nacional de la norma. La **Resolución de Secretaría de Gobierno y Transformación Digital n.° 003-2023-PCM/SGTD** dispone que las entidades públicas usen obligatoriamente la NTP-ISO/IEC 27001 **vigente**, que a la fecha corresponde a la edición **2022**. **Antecedente.** La Resolución Ministerial 004-2016-PCM había impuesto la NTP ISO/IEC 27001:2014 a las entidades del Sistema Nacional de Informática. Para el auditor esto significa que, en el sector público peruano, un incumplimiento del SGSI (Sistema de Gestión de Seguridad de la Información) **no es una desviación de buena práctica. Es un incumplimiento normativo con responsabilidad administrativa**.
 
-## Las cláusulas certificables 4 a 10
+> **El error frecuente del bloque.** Citar la 27002 como criterio de una no conformidad. La 27002 es una **guía de implementación**, no un requisito certificable, y un hallazgo que la cita como norma incumplida se cae en la primera revisión. El criterio se cita contra la 27001 y contra la Declaración de Aplicabilidad de la propia organización.
+
+## Bloque 2 · Las cláusulas certificables 4 a 10
+
+> **La pregunta del bloque.** *El Anexo A se lleva toda la atención. ¿Dónde se levantan de verdad las no conformidades mayores?*
 
 El Anexo A recibe toda la atención, pero la mayoría de las no conformidades mayores se levantan en las cláusulas 4 a 10:
 
@@ -94,7 +114,11 @@ El Anexo A recibe toda la atención, pero la mayoría de las no conformidades ma
 
 **La Declaración de Aplicabilidad (SoA)** es el documento más auditado del SGSI — lista los 93 controles del Anexo A y, para cada uno, declara si aplica, la justificación de inclusión o exclusión, y el estado de implementación. **Un control excluido sin justificación trazable al análisis de riesgos es una no conformidad mayor inmediata.**
 
-## Gestión del riesgo de seguridad de la información
+> **El error frecuente del bloque.** Auditar solo el Anexo A. Es donde están los noventa y tres controles y donde el auditado espera la revisión, pero las no conformidades mayores viven en las cláusulas 4 a 10 — un alcance sin justificar las exclusiones, una política sin firma vigente, un riesgo residual que nadie aceptó por escrito.
+
+## Bloque 3 · Gestión del riesgo de seguridad de la información
+
+> **La pregunta del bloque.** *¿Qué hace falta para que una calificación de riesgo signifique algo?*
 
 **El proceso (ISO/IEC 27005:2022 + ISO 31000).**
 
@@ -157,7 +181,6 @@ En este curso se usa el **enfoque basado en activos** por su trazabilidad direct
 
 > **Regla de auditoría.** Un riesgo «aceptado» sin firma del dueño del riesgo es en realidad un riesgo **ignorado**, y así debe reportarse.
 
-
 **Ejemplo trabajado — de la amenaza al riesgo residual.** Una municipalidad con el servidor de rentas sin soporte desde hace dos años.
 
 | Paso | Contenido |
@@ -170,7 +193,7 @@ En este curso se usa el **enfoque basado en activos** por su trazabilidad direct
 | **Riesgo inherente** | **Extremo** |
 | **Controles existentes** | Respaldo diario, sin prueba de restauración. Cortafuegos perimetral |
 | **Riesgo residual** | **Alto**. El respaldo limita la pérdida de datos, no evita la indisponibilidad ni la fuga |
-| **Tratamiento** | Mitigar: renovar soporte y aplicar parches. Plazo 60 días |
+| **Tratamiento** | **Mitigar.** Renovar soporte y aplicar parches. Plazo 60 días |
 | **Riesgo residual esperado** | Medio |
 | **Quién acepta el remanente** | Gerencia Municipal, por escrito |
 
@@ -184,24 +207,40 @@ En este curso se usa el **enfoque basado en activos** por su trazabilidad direct
 
 Está mal, y hay que saber por qué. Media × Alto no puede dar Medio si la propia escala de la organización define Alto para esa combinación. **El nivel se asignó a ojo, no con la matriz.** Es un hallazgo. El método declarado no se aplica.
 
-**Preguntas para la sesión**
+> **Microaplicación (5 min) · las tres preguntas que desarman un registro.** Con el caso del inicio a la vista, el aula escribe en parejas **las tres preguntas que le haría al responsable del registro** para saber si sirve. Se recogen y se contrastan con las de la tabla.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
 | ¿Se puede auditar un registro de riesgos sin ser experto en el negocio? | Sí. Se audita el **método**: ¿hay escala definida? ¿se aplicó de forma consistente? ¿los tratamientos tienen responsable y plazo? ¿quién aceptó el residual? |
 | Un riesgo con probabilidad Baja e impacto Alto, ¿se trata o se acepta? | Depende del apetito declarado. Lo auditable es que **exista una decisión explícita y firmada**, no cuál sea |
 | ¿Transferir un riesgo con un seguro lo elimina? | No. Transfiere la consecuencia económica. La interrupción, la sanción del regulador y el daño reputacional siguen siendo del titular |
-## Software libre para el tratamiento del riesgo
+## Bloque 4 · Herramientas libres para el tratamiento del riesgo
 
 | Herramienta | Licencia | Fortaleza | Limitación |
 |---|---|---|---|
 | **SimpleRisk Community** | Libre (con edición comercial) | Imagen Docker oficial; flujo completo riesgo→mitigación→revisión; mapeo a marcos | Reportería avanzada en la edición de pago |
 | **MONARC** | Open source (NC3 Luxemburgo) | Método optimizado y repetible; biblioteca de objetos de riesgo; alineado a ISO/IEC 27005 | No tiene imagen Docker oficial; se instala por VM, Vagrant o Ansible |
-| **eramba Community** | Community edition gratuita | GRC completo: riesgos, controles, políticas, cumplimiento | Curva de aprendizaje alta |
+| **eramba Community** | Community edition gratuita | **GRC completo.** Riesgos, controles, políticas, cumplimiento | Curva de aprendizaje alta |
 | **OpenVAS / Greenbone Community Edition** | GPL | Detección técnica de vulnerabilidades con CVE y CVSS | Alimenta el riesgo técnico, no es un GRC |
 | **Hoja de cálculo con método documentado** | LibreOffice Calc | Trazabilidad total, cero dependencias | No escala ni controla concurrencia |
 
 **Criterio de selección para el auditor.** La herramienta importa mucho menos que la **trazabilidad del método**. Un registro de riesgos en LibreOffice con escalas definidas, criterio de aceptación aprobado y firmas del dueño del riesgo es auditable; un GRC caro con escalas por defecto y sin firmas, no lo es.
+
+## Cierre · qué se lleva de aquí
+
+**La respuesta a la pregunta con la que abrimos.** Lo que distingue a un registro útil son dos cosas que el del caso no tenía — una **escala con definición operativa escrita antes de calificar**, de modo que dos personas distintas lleguen al mismo número, y **una línea de evidencia por cada calificación**. Sin lo primero, el nivel lo pone el ánimo de la reunión. Sin lo segundo, no hay nada que auditar.
+
+**Las tres ideas que deben quedar.**
+
+| Idea | Por qué importa en el ejercicio profesional |
+|---|---|
+| Cada norma de la familia 27000 tiene una función y se cita la correcta | Un criterio mal citado invalida el hallazgo aunque el hecho observado sea cierto |
+| Las no conformidades mayores viven en las cláusulas 4 a 10, no en el Anexo A | Determina por dónde empieza el auditor cuando el tiempo es limitado |
+| Una calificación de riesgo sin escala escrita y sin evidencia no es un dato | Es la prueba que convierte un registro de ochenta y cuatro filas en un hallazgo de una línea |
+
+**Volviendo a la exploración del inicio.** Se releen las respuestas del inicio. La pregunta que casi nadie responde bien es la tercera — el comité **pudo** haber decidido bien, y esa es justamente la razón por la que el hallazgo no es que las decisiones sean malas, sino que **no hay forma de saberlo**.
+
+**Lo que sigue.** La [dinámica de esta sesión](2-DINAMICA.md) entrega uno de los diez incidentes ya consumados y pide recorrer el camino inverso — reconstruir el riesgo que debió estar registrado antes, evaluarlo **con una escala declarada** y decidir su tratamiento. La escala se escribe antes de calificar, que es exactamente lo que faltó en el caso de hoy.
 
 ---
 

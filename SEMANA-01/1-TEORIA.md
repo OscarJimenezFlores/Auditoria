@@ -8,21 +8,35 @@
 
 ---
 
-## Qué se trabaja en esta sesión
+## La pregunta de esta sesión
 
-- Qué es auditar.
-- Qué es proteger la información.
-- Cómo se organiza el curso como un encargo de auditoría.
+Dos personas miran el mismo sistema de ventas el mismo día. Las dos ven que se puede anular una factura ya emitida. La primera anota «habría que arreglarlo» y sigue. La segunda escribe que **31 facturas se anularon en el periodo sin registro de autorización**, que el manual de la empresa lo exige en su numeral 8.4, y que eso representa S/ 214 000 en ventas anuladas sin trazabilidad.
+
+El gerente atiende a la segunda y descarta a la primera. Las dos vieron lo mismo.
+
+> **La pregunta que ordena esta sesión.** *¿Qué convierte una observación técnica en algo que una organización no puede ignorar?*
+
+## Antes de empezar
+
+| Lo que necesita traer | De dónde sale |
+|---|---|
+| Qué es un sistema de información y qué lo compone | Cursos previos de la carrera |
+| Nociones básicas de Linux, Docker y lectura de un registro de servidor | Se calibran hoy con la prueba de entrada |
+| La idea de riesgo como algo que puede ocurrir y tiene consecuencia | Conocimiento general |
+| Ninguna norma en particular | Se introducen hoy |
+
+> **Exploración (5 min), antes de cualquier definición.** Antes de definir nada, el aula responde en voz alta y las respuestas quedan anotadas para volver a ellas al cierre. *¿Qué le falta a la primera anotación para que alguien actúe? ¿Contra qué está comparando la segunda persona? ¿De dónde saca la cifra de S/ 214 000?* No se corrige ninguna respuesta todavía.
 
 ## Distribución del tiempo
 
-| Bloque | Minutos |
+| Momento | Minutos |
 |---|---|
-| Prueba de entrada | 10 |
-| Qué es auditar | 15 |
-| Qué es proteger la información | 20 |
-| Cómo se organiza el curso como un encargo de auditoría | 15 |
-| Cierre y encuadre metodológico | 5 |
+| El caso de las dos anotaciones y la exploración inicial | 8 |
+| **Prueba de entrada**, sin nota, para calibrar el punto de partida | 10 |
+| **Bloque 1.** Qué es auditar · con su microaplicación | 15 |
+| **Bloque 2.** Qué es proteger la información · con su microaplicación | 14 |
+| **Bloque 3.** Cómo se organiza el curso como un encargo | 10 |
+| Cierre, respuesta a la pregunta de la sesión y puente a la dinámica | 8 |
 | **Total de la sesión de aula** | **65** |
 
 ## Mapa de la sesión
@@ -68,7 +82,9 @@ Instrumento diagnóstico de 15 preguntas de opción múltiple, sin nota, para ca
 
 El resultado se comparte de forma agregada (histograma anónimo) y define qué refuerzos se insertan en las semanas 2 a 4.
 
-## Qué es auditar
+## Bloque 1 · Qué es auditar
+
+> **La pregunta del bloque.** *¿Por qué la segunda anotación obliga y la primera no?*
 
 **Definición normativa.** La ISO 19011:2018 define *auditoría* como el «proceso sistemático, independiente y documentado para obtener evidencia objetiva y evaluarla de manera objetiva con el fin de determinar el grado en que se cumplen los criterios de auditoría». Cada palabra de esa definición es operativa:
 
@@ -101,27 +117,30 @@ Si falta el criterio, el auditor está opinando. Si falta la evidencia, está es
 
 Esta es la razón por la que la Sarbanes-Oxley Act de 2002 —promulgada tras los colapsos de Enron y WorldCom— convirtió la evaluación de los controles internos sobre el reporte financiero, incluidos los de TI, en una obligación legal para las empresas listadas en bolsa de los Estados Unidos, con efecto de arrastre sobre sus subsidiarias en el Perú.
 
-
 **Ejemplo trabajado — la diferencia entre revisar y auditar.** Dos personas miran el mismo hecho. El sistema de ventas permite anular una factura ya emitida.
 
 | | El técnico revisa | El auditor audita |
 |---|---|---|
 | **Qué observa** | «Se puede anular una factura» | «Se puede anular una factura ya emitida, sin registro de quién ni por qué» |
-| **Contra qué lo compara** | Con lo que le parece razonable | Contra un **criterio**: el manual de procedimientos de la empresa, numeral 8.4, que exige autorización del jefe de ventas |
+| **Contra qué lo compara** | Con lo que le parece razonable | Contra un **criterio** — el manual de procedimientos de la empresa, numeral 8.4, que exige autorización del jefe de ventas |
 | **Qué concluye** | «Habría que arreglarlo» | «Condición: 31 anulaciones en el periodo sin registro de autorización. Criterio: numeral 8.4. Efecto: S/ 214 000 en ventas anuladas sin trazabilidad» |
 | **Con qué lo sustenta** | Su experiencia | La extracción del sistema, con fecha y responsable de la entrega |
 | **A quién responde** | A quien le preguntó | Al destinatario del encargo, con independencia de quien pidió la revisión |
 
 **Lo que separa a los dos no es el conocimiento técnico. Es el criterio y la evidencia.** Un técnico excelente sin criterio citado produce una opinión; un auditor con criterio produce un hallazgo exigible.
 
-**Preguntas para la sesión**
+> **Microaplicación (4 min) · el criterio, a mano alzada.** El docente lee cada caso y el aula responde **antes** de que se diga la respuesta. La primera se resuelve en la pizarra volviendo al caso de las dos anotaciones; las otras dos las responde el aula.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
 | ¿Puede haber hallazgo sin criterio? | No. Sin criterio solo hay una observación personal. El criterio puede ser una norma, un contrato o **la propia política de la empresa** |
 | El gerente dice: «pero eso siempre se ha hecho así». ¿Cambia algo? | No cambia la condición. Puede explicar la **causa** —práctica consolidada sin revisión— y eso mejora la recomendación |
 | ¿Auditar es buscar culpables? | No. El informe se dirige a controles y procesos, no a personas. Nombrar personas invade la función de gestión y compromete la independencia |
-## Qué es proteger la información
+> **El error frecuente del bloque.** Redactar la condición con un adjetivo. «El control de anulaciones es débil» no es una condición, es una opinión con aspecto técnico. La condición dice **qué se observó, cuántas veces y dónde consta**, y no admite discusión. La prueba es simple — si el auditado puede responder «no estoy de acuerdo», todavía no es una condición.
+
+## Bloque 2 · Qué es proteger la información
+
+> **La pregunta del bloque.** *¿Puede un control mejorar la seguridad y empeorarla al mismo tiempo?*
 
 **Información ≠ dato ≠ sistema.** El objeto protegido es la *información*, con independencia del soporte — base de datos, papel, conversación, respaldo en cinta o mensajería. Por eso la norma se llama sistema de gestión de la *seguridad de la información* y no «seguridad informática».
 
@@ -151,7 +170,6 @@ Riesgo de auditoría = Riesgo inherente × Riesgo de control × Riesgo de detecc
 
 El auditor no puede modificar los dos primeros; sí puede reducir el tercero ampliando la muestra, cambiando la técnica o aumentando la profundidad de la prueba.
 
-
 **Ejemplo trabajado — los tres pilares sobre un caso.** Una distribuidora guarda en un servidor la lista de precios negociados con cada cliente.
 
 | Pilar | Qué significa aquí | Cómo se rompe | Control que lo sostiene |
@@ -162,21 +180,25 @@ El auditor no puede modificar los dos primeros; sí puede reducir el tercero amp
 
 > **Los tres compiten entre sí.** Cifrar la lista mejora la confidencialidad y empeora la disponibilidad si se pierde la clave. Replicarla a tres servidores mejora la disponibilidad y multiplica los puntos donde se puede filtrar. **Diseñar controles es decidir ese equilibrio, no maximizar los tres.**
 
-**Preguntas para la sesión**
+> **Microaplicación (4 min) · el cifrado que rompe la disponibilidad.** Se plantea el caso del hospital y el aula vota primero **si mejoró o empeoró la seguridad**, antes de razonar. La votación dividida es el punto de entrada a la tríada.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
-| Un hospital cifra las historias clínicas con una clave que solo conoce el jefe de sistemas. ¿Mejoró la seguridad? | Mejoró la confidencialidad y creó un riesgo grave de disponibilidad e integridad: si esa persona no está, la información es irrecuperable. Es un punto único de falla disfrazado de control |
-| ¿Cuál de los tres pilares suele ser el más crítico en un hospital? ¿Y en un banco? | En el hospital, disponibilidad e integridad: una historia clínica no disponible o alterada puede costar una vida. En el banco, integridad y confidencialidad del saldo y del dato del cliente |
+| Un hospital cifra las historias clínicas con una clave que solo conoce el jefe de sistemas. ¿Mejoró la seguridad? | Mejoró la confidencialidad y creó un riesgo grave de disponibilidad e integridad. Si esa persona no está, la información es irrecuperable. Es un punto único de falla disfrazado de control |
+| ¿Cuál de los tres pilares suele ser el más crítico en un hospital? ¿Y en un banco? | En el hospital, disponibilidad e integridad. Una historia clínica no disponible o alterada puede costar una vida. En el banco, integridad y confidencialidad del saldo y del dato del cliente |
 | ¿Es la trazabilidad un cuarto pilar? | Se discute. Lo defendible es que **sostiene a los tres**: sin registro de quién hizo qué, no se puede demostrar que ninguno se preservó |
-## Cómo se organiza el curso como un encargo de auditoría
+> **El error frecuente del bloque.** Reducir la seguridad de la información a la confidencialidad. Es el reflejo automático — se piensa en quién puede ver el dato y se olvida quién puede alterarlo y quién puede quedarse sin él. Los tres pilares compiten entre sí, y un control que refuerza uno suele debilitar otro.
+
+## Bloque 3 · Cómo se organiza el curso como un encargo de auditoría
+
+> **La pregunta del bloque.** *¿Por qué el curso se organiza como un encargo real y no como una serie de temas?*
 
 **El curso es un encargo real de auditoría.** Los equipos (4 a 5 integrantes) reciben esta hoja de ruta:
 
 | Unidad | Semanas | Producto acumulado |
 |---|---|---|
-| I | 1–6 | **Expediente de pruebas técnicas**: entorno auditable, hallazgos técnicos con evidencia |
-| II | 7–12 | **Plan integral de auditoría**: plan anual, programa, procedimientos, matriz legal |
+| I | 1–6 | **Expediente de pruebas técnicas**. Entorno auditable, hallazgos técnicos con evidencia |
+| II | 7–12 | **Plan integral de auditoría** — plan anual, programa, procedimientos, matriz legal |
 | III | 13–17 | **Informe final de auditoría de una empresa real** + sustentación |
 
 **Selección de la organización auditada.** Cada equipo propone esta misma semana una **empresa real**, con estos requisitos mínimos:
@@ -189,11 +211,27 @@ El docente aprueba o rechaza en la Semana 2. Si el acceso no se concreta, el equ
 
 **Ética y confidencialidad.** Antes de cualquier prueba técnica se firman dos documentos. El **acta de acuerdo y alcance** (qué se puede probar, cuándo y sobre qué activos) y el **acuerdo de confidencialidad**. El Código de Ética Profesional de ISACA obliga al auditor a mantener la confidencialidad de la información obtenida y a no usarla en beneficio propio. **Ninguna prueba técnica se ejecuta sobre un sistema de terceros sin autorización escrita** — en el Perú, el acceso no autorizado a un sistema informático está tipificado en la Ley 30096, Ley de Delitos Informáticos.
 
-## Cierre y encuadre metodológico
+## Encuadre metodológico del curso
 
 - La Unidad I es **puro laboratorio técnico**. Se audita con herramientas, no con diapositivas.
 - La Unidad II es **puro plan**. Aprender a planificar es lo que separa a un auditor de un operador de herramientas.
 - La Unidad III es **el informe**. El único entregable que la organización auditada realmente lee.
+
+## Cierre · qué se lleva de aquí
+
+**La respuesta a la pregunta con la que abrimos.** Lo que convierte una observación en algo que no se puede ignorar es el **criterio**. La primera persona comparó lo que vio con lo que le pareció razonable; la segunda lo comparó con el numeral 8.4 del manual de la propia empresa. Un hallazgo sin criterio es una opinión, y una opinión se discute; un criterio citado con su numeral, no.
+
+**Las tres ideas que deben quedar.**
+
+| Idea | Por qué importa en el ejercicio profesional |
+|---|---|
+| Auditar es comparar una condición contra un criterio, con evidencia que lo sostiene | Es la definición operativa de la ISO 19011:2018 y de ella se derivan todos los procedimientos del semestre |
+| Sin papel de trabajo, el hallazgo no existe | Un hallazgo que no se puede rastrear hasta su evidencia no resiste la primera objeción del auditado |
+| La seguridad de la información son tres propiedades que compiten entre sí | Un control que mejora una y destruye otra no es una mejora, y reconocerlo es lo que distingue al auditor del técnico |
+
+**Volviendo a la exploración del inicio.** Se releen las respuestas del inicio. Casi siempre nadie mencionó el manual de la empresa como fuente del criterio, y ahí está el aprendizaje — el criterio no tiene que ser una norma internacional, la propia política de la organización basta y a menudo es más difícil de rebatir.
+
+**Lo que sigue.** La [dinámica de esta sesión](2-DINAMICA.md) entrega un extracto de evidencia real anonimizada y pide **un hallazgo formal con sus cinco partes**. No se trata de detectar el problema técnico, que está a la vista, sino de redactarlo de modo que la organización no pueda discutirlo. Es exactamente lo que separaba a las dos personas del caso con el que abrimos.
 
 ---
 

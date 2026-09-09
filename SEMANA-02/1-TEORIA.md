@@ -8,20 +8,34 @@
 
 ---
 
-## Qué se trabaja en esta sesión
+## La pregunta de esta sesión
 
-- Información y seguridad de la información.
-- Los principios que sostienen el diseño de controles.
-- Roles y responsabilidades en seguridad de la información.
+Una empresa de seis personas descubre que su contador registró proveedores ficticios y les pagó durante catorce meses. El informe del auditor externo dice, en una línea, «no existe segregación de funciones» y recomienda implementarla.
+
+El gerente responde que son seis personas y que no puede contratar a nadie más. El informe se archiva y nada cambia. Dos años después ocurre otra vez.
+
+> **La pregunta que ordena esta sesión.** *¿Qué se recomienda cuando el control correcto es imposible de aplicar?*
+
+## Antes de empezar
+
+| Lo que necesita traer | De dónde sale |
+|---|---|
+| Qué es auditar y la estructura de un hallazgo | Semana 01 |
+| La tríada de confidencialidad, integridad y disponibilidad | Semana 01 |
+| Qué es un control y para qué sirve | Noción intuitiva; se formaliza en la Semana 04 |
+| La idea de que la información tiene un dueño | Se construye hoy |
+
+> **Exploración (5 min), antes de cualquier definición.** El aula responde sin consultar apuntes y las respuestas quedan a la vista. *¿Qué debió recomendar el auditor? ¿Quién debía responder por ese registro de proveedores, el contador o alguien más? ¿Qué habría detectado el fraude sin contratar a nadie?* Ninguna respuesta se corrige todavía.
 
 ## Distribución del tiempo
 
-| Bloque | Minutos |
+| Momento | Minutos |
 |---|---|
-| Información y seguridad de la información | 15 |
-| Los principios que sostienen el diseño de controles | 20 |
-| Roles y responsabilidades en seguridad de la información | 25 |
-| Cierre | 5 |
+| El caso de los proveedores ficticios y la exploración inicial | 10 |
+| **Bloque 1.** Información y seguridad de la información · con su microaplicación | 15 |
+| **Bloque 2.** Los principios que sostienen el diseño de controles · con su microaplicación | 20 |
+| **Bloque 3.** Roles y responsabilidades | 12 |
+| Cierre, respuesta a la pregunta de la sesión y puente a la dinámica | 8 |
 | **Total de la sesión de aula** | **65** |
 
 ## Mapa de la sesión
@@ -54,7 +68,9 @@ flowchart TD
 
 ---
 
-## Información y seguridad de la información
+## Bloque 1 · Información y seguridad de la información
+
+> **La pregunta del bloque.** *¿De quién es la información de clientes, del área comercial o del área de sistemas?*
 
 **La información es el activo; la seguridad es una propiedad de su tratamiento.** Confundirlas produce el error más común en las organizaciones peruanas. Comprar un cortafuegos y declarar que «ya se implementó la 27001».
 
@@ -78,7 +94,11 @@ flowchart TD
 
 En el Perú, la Ley 29733 de Protección de Datos Personales y su reglamento fuerzan a incorporar una dimensión adicional. Los **datos sensibles** (origen étnico, salud, biometría, ingresos económicos, convicciones) exigen consentimiento expreso y medidas de seguridad reforzadas, con independencia de la clasificación comercial que la empresa les asigne.
 
-## Los principios que sostienen el diseño de controles
+> **El error frecuente del bloque.** Creer que la seguridad es un producto que se compra. Es el error que produce organizaciones con un cortafuegos caro, una política sin aprobar y ningún inventario de qué información tienen. La seguridad es una **propiedad del tratamiento** de un activo que pertenece al negocio, no al área de TI.
+
+## Bloque 2 · Los principios que sostienen el diseño de controles
+
+> **La pregunta del bloque.** *¿Cuál de estos nueve principios se rompe en el caso del contador?*
 
 Estos principios no son eslóganes. Cada uno es una **prueba de auditoría concreta**.
 
@@ -106,7 +126,6 @@ Combinaciones tóxicas clásicas que el auditor busca siempre:
 | Administrar usuarios | Operar la transacción | Autoconcesión de privilegios |
 | Custodiar el activo | Registrar el activo | Faltante encubierto contablemente |
 
-
 **Ejemplo trabajado — los principios aplicados a un solo caso.** Una cooperativa contrata a un analista de créditos.
 
 | Principio | Cómo se aplica aquí | Qué pasa si se ignora |
@@ -116,18 +135,22 @@ Combinaciones tóxicas clásicas que el auditor busca siempre:
 | **Segregación de funciones** | Evalúa el crédito, pero no lo aprueba ni desembolsa | Un solo empleado origina, aprueba y transfiere |
 | **Defensa en profundidad** | Permisos, más registro de accesos, más revisión mensual | Un solo control fallando deja el activo descubierto |
 | **Falla segura** | Si el sistema de permisos no responde, **niega** el acceso | Ante un fallo, el sistema abre todo «para no detener la operación» |
-| **Responsabilidad individual** | Cada acceso queda registrado con usuario nominal | Cuentas compartidas: nadie responde por nada |
+| **Responsabilidad individual** | Cada acceso queda registrado con usuario nominal | **Cuentas compartidas.** Nadie responde por nada |
 
 > **Fíjese en el caso real.** El acceso indebido a 1 900 expedientes no se detectó por un control. Se detectó por una denuncia interna. Fallaron el mínimo privilegio *y* la defensa en profundidad, porque el servidor de archivos **no registraba accesos de lectura**.
 
-**Preguntas para la sesión**
+> **Microaplicación (5 min) · la prueba de cada principio.** Cada principio de la tabla trae una prueba concreta. En parejas, el aula elige **tres principios y escribe qué pediría exactamente** para comprobarlos en la empresa del caso. Se recogen dos propuestas antes de continuar.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
 | ¿Por qué «falla segura» es tan poco popular en las organizaciones? | Porque cuando el control falla, la operación se detiene. La alternativa —abrir todo— es cómoda y es exactamente lo que un atacante provoca a propósito |
 | Una empresa de 6 personas no puede segregar funciones. ¿Se abandona el principio? | No. Se sustituye por un control **compensatorio** documentado: revisión posterior por un tercero, con registro. Y se declara por qué se compensó |
-| ¿Registrar accesos de lectura es exagerado? | Depende del dato. Para datos sensibles no lo es: sin ese registro, una fuga por lectura es indetectable e indemostrable |
-## Roles y responsabilidades en seguridad de la información
+| ¿Registrar accesos de lectura es exagerado? | Depende del dato. Para datos sensibles no lo es sin ese registro, una fuga por lectura es indetectable e indemostrable |
+> **El error frecuente del bloque.** Reportar «no hay segregación de funciones» en una empresa pequeña sin proponer el control compensatorio. Es el error del informe del caso con el que abrimos — técnicamente correcto y profesionalmente inútil, porque señala una imposibilidad en lugar de una acción. En una organización sin personal suficiente, **el hallazgo no es la ausencia de segregación, es la ausencia de compensación**.
+
+## Bloque 3 · Roles y responsabilidades en seguridad de la información
+
+> **La pregunta del bloque.** *Cuando algo sale mal, ¿quién responde y quién ejecuta?*
 
 **El error estructural.** Cuando la responsabilidad de la seguridad se concentra en TI, ocurre un conflicto irresoluble. Quien opera el sistema decide también qué riesgo se acepta sobre él. La ISO/IEC 27001:2022 lo resuelve en su cláusula 5.3 exigiendo que la dirección asigne responsabilidades y autoridades de forma explícita.
 
@@ -147,7 +170,6 @@ Combinaciones tóxicas clásicas que el auditor busca siempre:
 
 **El caso peruano en el sector público.** El Decreto Supremo 029-2021-PCM, reglamento de la Ley de Gobierno Digital (Decreto Legislativo 1412), y las resoluciones de la Secretaría de Gobierno y Transformación Digital establecen la figura del **Líder de Gobierno Digital** y la del **Oficial de Seguridad de la Información**, con responsabilidades formalmente separadas de la jefatura de la Oficina de Tecnologías de la Información. Cuando en una entidad pública el jefe de TI es simultáneamente el Oficial de Seguridad, existe un hallazgo de cumplimiento normativo, no solo de buena práctica.
 
-
 **Ejemplo trabajado — quién responde cuando algo sale mal.** Se filtran datos de clientes desde una carpeta compartida mal configurada.
 
 | Rol | Qué le correspondía | Qué se le puede exigir |
@@ -160,17 +182,31 @@ Combinaciones tóxicas clásicas que el auditor busca siempre:
 
 > **El error más común en los informes de estudiantes** es atribuirle todo a TI. Si el jefe de Comercial nunca definió quién debía acceder, el custodio configuró en el vacío. **El hallazgo es sobre la ausencia de propietario declarado**, no sobre la configuración.
 
-**Preguntas para la sesión**
+> **Microaplicación (4 min) · quién responde por el dato.** El aula responde a mano alzada antes de la explicación. La respuesta mayoritaria suele ser la equivocada, y por eso conviene recogerla primero.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
 | ¿Puede el jefe de sistemas ser propietario de los datos de clientes? | No debería. El propietario es quien conoce el uso del negocio y decide quién accede. Si TI es propietario **y** custodio, no hay quien controle a quien controla |
 | ¿Qué se le exige a la alta dirección en un hallazgo de seguridad? | Haber aprobado una política, asignado responsabilidades y provisto recursos. Su responsabilidad es de gobierno, no de configuración |
 | ¿Sirve una política de seguridad que nadie leyó? | Como criterio de auditoría, sí: existe y es exigible. Como control, no: sin difusión ni verificación, no opera |
-## Cierre
+## Cierre · qué se lleva de aquí
+
+**La respuesta a la pregunta con la que abrimos.** Cuando el control correcto es inviable por tamaño o por costo, se recomienda un **control compensatorio** que cubra el mismo objetivo por otra vía, y se documenta por qué se recurre a él. En la empresa del caso, la revisión mensual de todos los pagos por el contador externo detecta al proveedor ficticio sin contratar a nadie. El informe original no era falso, era inaplicable.
+
+**Las tres ideas que deben quedar.**
+
+| Idea | Por qué importa en el ejercicio profesional |
+|---|---|
+| La información es del negocio; la seguridad es una propiedad de su tratamiento | Determina a quién se le pide la evidencia y quién responde por el hallazgo |
+| Cada principio de diseño trae asociada una prueba concreta | Convierte nueve enunciados abstractos en nueve procedimientos que se pueden ejecutar en campo |
+| En una organización pequeña, el hallazgo es la ausencia de control compensatorio | Es la diferencia entre un informe que se archiva y uno que produce un cambio |
+
+**Volviendo a la exploración del inicio.** Se releen las respuestas iniciales. La pregunta que más se falla es la tercera — casi todo el mundo propone contratar más gente o comprar un sistema, y casi nadie propone que alguien de fuera del proceso revise después. Esa es la definición de control compensatorio.
+
+**Lo que sigue.** La [dinámica de esta sesión](2-DINAMICA.md) entrega la estructura y la matriz de accesos de su organización, y pide detectar las combinaciones tóxicas de funciones **y proponer controles compensatorios viables para el tamaño de esa empresa**. La restricción es explícita — no vale «contratar más gente».
+
 
 La pregunta que sintetiza la sesión — **si mañana ocurre una fuga de datos en esta organización, ¿quién firma la respuesta al regulador?** Si la respuesta es «el jefe de sistemas», la organización tiene un problema de gobierno, no de tecnología.
-
 ---
 
 ---

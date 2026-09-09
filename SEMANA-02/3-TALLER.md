@@ -18,9 +18,11 @@ flowchart TD
     PD["<b>Paso D</b><br/>Detectar conflictos de<br/>segregación de funciones<br/><i>15 min</i>"]
     PE["<b>Paso E</b><br/>Pruebas de ciclo de vida y<br/>política de credenciales<br/><i>10 min</i>"]
     PF["<b>Paso F</b><br/>Documentar los hallazgos<br/><i>5 min</i>"]
-    PA --> PB --> PC --> PD --> PE --> PF
+    PG["<b>Paso G</b><br/>Validar y corregir<br/><i>25 min</i>"]
+    PH["<b>Paso H</b><br/>Registrar y cerrar<br/><i>15 min</i>"]
+    PA --> PB --> PC --> PD --> PE --> PF --> PG --> PH
     classDef paso fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
-    class PA,PB,PC,PD,PE,PF paso;
+    class PA,PB,PC,PD,PE,PF,PG,PH paso;
 ```
 
 ## Qué entregas
@@ -37,6 +39,14 @@ flowchart TD
 > No se califica un informe entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con resultados declarados sin evidencia.
 
 ---
+
+## El reto
+
+| | |
+|---|---|
+| **Situación** | La organización afirma que nadie puede aprobar sus propias operaciones. Los perfiles del sistema dicen otra cosa, pero nadie los ha leído nunca. |
+| **Misión** | Extraer los permisos efectivos con los roles compuestos resueltos y demostrar con datos qué conflictos de segregación existen realmente. |
+| **Criterio de éxito** | Cada conflicto declarado se sostiene en la matriz de permisos efectivos, no en el nombre del rol. |
 
 ## 1. Información sobre el evento práctico
 
@@ -85,8 +95,6 @@ Auditoría de la gestión de identidades y accesos sobre un proveedor de identid
 ## 2. Procedimiento o Metodología
 
 > **Documento del caso para esta semana.** La organización entrega **Organigrama y matriz de accesos**, en `CASOS/EMPRESA-<NN>-<slug>/documentos/organigrama-y-accesos.md`. Es consistente con los datos de `datos/`. Las personas, usuarios y proveedores que menciona existen en los archivos. **No señala sus debilidades**; declara lo que la organización dice hacer.
-
-
 
 ### Paso A — Desplegar el proveedor de identidad
 
@@ -194,11 +202,11 @@ curl -s -H "Authorization: Bearer $TOKEN" \
 Se define primero la **matriz de conflictos** —el criterio— y luego se contrasta con la evidencia:
 
 ```python
-# archivo: ../../30_papeles_trabajo/PT02_analisis_sod.py
+# archivo · ../../30_papeles_trabajo/PT02_analisis_sod.py
 import json, pandas as pd
 from itertools import combinations
 
-# --- CRITERIO: matriz de funciones incompatibles ---
+# --- CRITERIO · matriz de funciones incompatibles ---
 CONFLICTOS = [
     ("compras.crear_proveedor",   "compras.aprobar_pago",      "Proveedor fantasma con pago autoaprobado", "Crítico"),
     ("compras.aprobar_pago",      "tesoreria.emitir_cheque",   "Aprobación y desembolso por la misma persona", "Crítico"),
@@ -229,7 +237,7 @@ print(f"Roles distintos     : {len(matriz.columns)}")
 print(f"Conflictos SoD      : {len(conf)}")
 print(conf.to_string(index=False) if len(conf) else "Sin conflictos")
 
-# --- Prueba adicional: usuarios con privilegio excesivo ---
+# --- Prueba adicional · usuarios con privilegio excesivo ---
 print("\nUsuarios con más de 4 roles efectivos:")
 print(matriz.sum(axis=1).sort_values(ascending=False).head(8).to_string())
 ```
@@ -264,7 +272,21 @@ Se redactan como mínimo **dos hallazgos** en `40_hallazgos/`, con estructura CC
 
 ---
 
+### Paso G — Validar y corregir (25 min)
 
+El resultado no vale por estar hecho, sino por resistir una comprobación. Se ejecutan estas tres y **se corrige lo que falle antes de cerrar la sesión**.
+
+1. Comprobar que la matriz resolvió los **roles compuestos**. Un usuario con un rol que hereda otro debe aparecer con ambos permisos.
+2. Verificar que cada conflicto de `PT02_conflictos_sod.csv` identifica las dos funciones incompatibles, no solo el usuario.
+3. Contrastar que las ocho pruebas P1–P8 tienen veredicto **y** la evidencia que lo sostiene, no solo el veredicto.
+
+> Lo que no se pueda corregir hoy se anota en la sección **Problemas y mejoras** de la evidencia, con lo que faltó y por qué. Un resultado parcial documentado con honestidad vale más que uno declarado sin prueba.
+
+### Paso H — Registrar la evidencia y cerrar (15 min)
+
+Se versiona lo producido, se anota la URL de cada resultado y se responde en dos frases la pregunta de transferencia — **qué riesgo correría una organización real si esto se hiciera mal**.
+
+---
 
 ## 3. Resultados
 
@@ -289,9 +311,19 @@ Se redactan como mínimo **dos hallazgos** en `40_hallazgos/`, con estructura CC
 >
 > **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
-### 3.1. Tabla de resultados
+### 3.1. Los tres resultados que se califican
 
+Son los que la rúbrica evalúa. El resto de la lista tiene que existir, pero no se califica fila por fila.
 
+| Resultado | Qué demuestra | Dónde está |
+|---|---|---|
+| **La matriz de permisos efectivos** | Los roles compuestos resueltos hasta el permiso final | Salida de `PT02_analisis_sod.py` |
+| **Los conflictos detectados** | Al menos tres, con las dos funciones incompatibles nombradas | `PT02_conflictos_sod.csv` |
+| **Los dos hallazgos** | Estructura CCCER con el control ISO citado por su código | `40_hallazgos/H-002.md` y `H-003.md` |
+
+### 3.2. Lista de comprobación del taller
+
+Todo esto debe existir al cerrar la sesión.
 
 | # | Resultado esperado | Verificación |
 |---|---|---|
@@ -302,7 +334,6 @@ Se redactan como mínimo **dos hallazgos** en `40_hallazgos/`, con estructura CC
 | 5 | Tabla de las ocho pruebas P1–P8 con veredicto y evidencia por prueba | Papel de trabajo |
 | 6 | Dos hallazgos CCCER con criterio ISO citado por código de control | `40_hallazgos/H-002.md`, `H-003.md` |
 | 7 | `SHA256SUMS_E02.txt` y registro en la cadena de custodia | Contenido de los archivos |
-
 
 ## Rúbrica procedimental (20 puntos)
 

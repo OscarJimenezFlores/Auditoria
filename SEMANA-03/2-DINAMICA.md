@@ -8,11 +8,60 @@
 
 ---
 
-## Qué se busca con esta actividad
+## Cómo funciona la actividad
+
+```mermaid
+flowchart LR
+    C["<b>Consigna</b><br/>Del incidente al riesgo tratado"]
+    P["<b>Producto</b><br/>el resultado de la actividad,<br/>en la plantilla de dinámica"]
+    E["<b>Exposición</b><br/>el grupo lee y explica<br/>su resultado, sin diapositivas"]
+    G["<b>Entrega</b><br/>PDF formateado,<br/>después de la clase"]
+    R["<b>Rúbrica</b><br/>nota cognitiva"]
+    C --> P --> E --> G --> R
+    classDef d fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
+    class C,P,E,G,R d;
+```
+
+## Qué entregas
+
+| | |
+|---|---|
+| **Archivo** | `SI084-S03-DINAMICA-Grupo<N>.pdf` |
+| **Plantilla obligatoria** | [SI084-PLANTILLA-DINAMICA.docx](../PLANTILLAS/SI084-PLANTILLA-DINAMICA.docx) |
+| **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT y los apellidos, nombres y códigos de todos los integrantes |
+| **Qué va dentro** | Lo que el grupo resolvió en aula. Las tablas de la sección **Producto** van completas, con los textos redactados, y cada decisión va justificada |
+| **Dónde se sube** | Aula virtual, tarea «Dinámica · Semana 03» |
+| **Cuándo vence** | Hasta 24 h después de la sesión de teoría. La tabla se resuelve en aula; el PDF se formatea y se sube después |
+| **Exposición** | En la ronda de cierre de **esta misma sesión**. El grupo **lee y explica su resultado** ante el aula, con el documento a la vista. No se usan diapositivas |
+
+> No se califica un trabajo entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con las tablas del producto vacías.
+
+---
+
+## Consigna
+
+> **«Del incidente al riesgo tratado»**
+> Cada equipo recibe **uno de los diez incidentes** de esta página, con su línea de tiempo, los sistemas afectados, los controles que existían y la respuesta de la organización. Debe recorrer el camino inverso al que recorrió la empresa. **Del incidente consumado, reconstruir el riesgo que debió estar registrado, evaluarlo y decidir su tratamiento**.
+
+| | |
+|---|---|
+| **Su papel** | **Analista de riesgos** que llega el día después del incidente |
+| **Misión** | Reconstruir el riesgo que debió estar registrado antes, evaluarlo y decidir su tratamiento |
+| **Restricción** | **La escala se declara antes de calificar.** No vale ajustar el número al desenlace, que ya se conoce |
 
 Que el equipo recorra el camino inverso al que recorrió la organización. Del incidente ya consumado, reconstruir el riesgo que debió estar registrado antes, evaluarlo con una escala declarada y decidir su tratamiento. Es el ejercicio que enseña por qué un registro de riesgos vacío no significa que no haya riesgos.
 
-## Con qué material se trabaja
+## Cómo se desarrolla · 35 minutos
+
+| | Bloque | Quién | Minutos |
+|---|---|---|---|
+| **1** | **Leer la línea de tiempo.** Se recorre la línea de tiempo del incidente asignado y se separan tres cosas que suelen confundirse. Qué falló, qué se hizo cuando falló y qué se dejó de hacer antes. | Equipo | 7 |
+| **2** | **Activo y dueño.** Se nombra el activo afectado, tomado de la fila de sistemas, y el cargo que debía responder por él. Si nadie responde por ese activo, ese es ya el primer hallazgo. | Equipo | 7 |
+| **3** | **Amenaza y controles que fallaron.** Se identifica la vulnerabilidad explotada y se contrasta con la fila **controles que existían**. Un control que existía y no operó no es lo mismo que un control ausente, y el tratamiento es distinto en cada caso. | Equipo | 7 |
+| **4** | **Probabilidad e impacto inherentes.** Se califican de 1 a 5 con la escala de la teoría, y **se justifica cada valor con un dato de la línea de tiempo**. La ubicación en la matriz se anota junto con el valor. | Equipo | 7 |
+| **5** | **Tratamiento y residual.** Se decide mitigar, transferir, evitar o aceptar, se citan los controles del Anexo A con su código, se estima el residual y se nombra el cargo que debe firmar su aceptación. | Equipo | 7 |
+
+## Material de trabajo
 
 **Todo lo que se necesita está en esta página.** Se **asigna un incidente a cada equipo al iniciar la actividad**, de los diez del cuadro siguiente. Son diez organizaciones distintas, con activos, controles y consecuencias distintas, de modo que **ninguna ficha de riesgo coincide con la de otro equipo**.
 
@@ -120,37 +169,6 @@ Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan 
 | [Las cláusulas certificables 4 a 10](1-TEORIA.md) | La cláusula 6 fija que el tratamiento se decide contra un criterio de aceptación acordado, no por preferencia del equipo |
 | [La familia de normas ISO/IEC 27000](1-TEORIA.md) | Ubica de dónde se toman los controles del Anexo A que se citan en el tratamiento |
 
-## Cómo se desarrolla · 35 minutos
-
-| | Bloque | Quién | Minutos |
-|---|---|---|---|
-| **1** | **Leer la línea de tiempo.** Se recorre la línea de tiempo del incidente asignado y se separan tres cosas que suelen confundirse. Qué falló, qué se hizo cuando falló y qué se dejó de hacer antes. | Equipo | 7 |
-| **2** | **Activo y dueño.** Se nombra el activo afectado, tomado de la fila de sistemas, y el cargo que debía responder por él. Si nadie responde por ese activo, ese es ya el primer hallazgo. | Equipo | 7 |
-| **3** | **Amenaza y controles que fallaron.** Se identifica la vulnerabilidad explotada y se contrasta con la fila **controles que existían**. Un control que existía y no operó no es lo mismo que un control ausente, y el tratamiento es distinto en cada caso. | Equipo | 7 |
-| **4** | **Probabilidad e impacto inherentes.** Se califican de 1 a 5 con la escala de la teoría, y **se justifica cada valor con un dato de la línea de tiempo**. La ubicación en la matriz se anota junto con el valor. | Equipo | 7 |
-| **5** | **Tratamiento y residual.** Se decide mitigar, transferir, evitar o aceptar, se citan los controles del Anexo A con su código, se estima el residual y se nombra el cargo que debe firmar su aceptación. | Equipo | 7 |
-
-## Qué entregas
-
-| | |
-|---|---|
-| **Archivo** | `SI084-S03-DINAMICA-Grupo<N>.pdf` |
-| **Plantilla obligatoria** | [SI084-PLANTILLA-DINAMICA.docx](../PLANTILLAS/SI084-PLANTILLA-DINAMICA.docx) |
-| **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT y los apellidos, nombres y códigos de todos los integrantes |
-| **Qué va dentro** | Lo que el grupo resolvió en aula. Las tablas de la sección **Producto** van completas, con los textos redactados, y cada decisión va justificada |
-| **Dónde se sube** | Aula virtual, tarea «Dinámica · Semana 03» |
-| **Cuándo vence** | Hasta 24 h después de la sesión de teoría. La tabla se resuelve en aula; el PDF se formatea y se sube después |
-| **Exposición** | En la ronda de cierre de **esta misma sesión**. El grupo **lee y explica su resultado** ante el aula, con el documento a la vista. No se usan diapositivas |
-
-> No se califica un trabajo entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con las tablas del producto vacías.
-
----
-
-## Consigna
-
-> **«Del incidente al riesgo tratado»**
-> Cada equipo recibe **uno de los diez incidentes** de esta página, con su línea de tiempo, los sistemas afectados, los controles que existían y la respuesta de la organización. Debe recorrer el camino inverso al que recorrió la empresa. **Del incidente consumado, reconstruir el riesgo que debió estar registrado, evaluarlo y decidir su tratamiento**.
-
 ## Producto
 
 **Producto 1 — Ficha del riesgo.**
@@ -187,7 +205,7 @@ Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan 
 |---|---|
 | Activo afectado y su dueño | Repositorio de documentos de recursos humanos en almacenamiento de objetos en nube, con contratos, boletas y fichas médicas de 480 trabajadores. **Dueño del riesgo:** Gerente de Recursos Humanos. |
 | Amenaza / Vulnerabilidad explotada | **Amenaza:** divulgación no autorizada de información. **Vulnerabilidad:** el contenedor de almacenamiento quedó con permiso de lectura pública tras una migración, y su dirección fue indexada por buscadores. |
-| Controles que existían y por qué fallaron | Existía una política de clasificación que marcaba esos documentos como Restringidos, pero la clasificación no se traducía en ninguna configuración técnica. Existía revisión de accesos, pero solo sobre el ERP: el almacenamiento en nube no estaba en el alcance del inventario de activos. |
+| Controles que existían y por qué fallaron | Existía una política de clasificación que marcaba esos documentos como Restringidos, pero la clasificación no se traducía en ninguna configuración técnica. Existía revisión de accesos, pero solo sobre el ERP. El almacenamiento en nube no estaba en el alcance del inventario de activos. |
 | Probabilidad e impacto inherentes | **Probabilidad 3 (Media).** La escala define 3 como «una vez al año»; los errores de configuración en migraciones ocurren con esa frecuencia en la organización, según el registro de cambios. **Impacto 5 (Catastrófico).** Hay datos sensibles de salud, la exposición es irreversible y activa la obligación de notificar a la autoridad de protección de datos. |
 | Riesgo inherente y ubicación en la matriz | 3 × 5 = **15 · Crítico**. |
 
@@ -195,7 +213,7 @@ Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan 
 
 | Campo | Contenido |
 |---|---|
-| Decisión y por qué | **Mitigar.** El criterio de aceptación de la organización es 6, y el riesgo inherente lo supera con holgura. Transferir no aplica: una póliza cubre el costo económico, no la exposición de datos sensibles ni la responsabilidad ante la autoridad. |
+| Decisión y por qué | **Mitigar.** El criterio de aceptación de la organización es 6, y el riesgo inherente lo supera con holgura. **Transferir no aplica.** Una póliza cubre el costo económico, no la exposición de datos sensibles ni la responsabilidad ante la autoridad. |
 | Controles del Anexo A propuestos | **A.5.23 Information security for use of cloud services**, control nuevo de la edición 2022, para incorporar el almacenamiento en nube al inventario y fijar su configuración segura. **A.8.3 Information access restriction**, para que el permiso por defecto sea denegar. **A.8.9 Configuration management**, también nuevo en 2022, con verificación automática de que ningún contenedor queda público. **A.8.12 Data leakage prevention**, para detectar la exposición si vuelve a ocurrir. |
 | Riesgo residual estimado | Probabilidad 1, Impacto 5 → **5 · Medio**. Queda por debajo del criterio de 6, así que **sí puede aceptarse**, con firma. |
 | Dueño que firma la aceptación | Gerente de Recursos Humanos, dueño del proceso y de los datos. **Nunca el jefe de TI**, que es el custodio. |

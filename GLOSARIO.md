@@ -24,7 +24,7 @@ Las siglas de normas se citan como aparecen en la norma original. Los términos 
 
 | Término | Significado |
 |---|---|
-| **Encargo** | El trabajo de auditoría acordado: alcance, criterio, periodo y entregables |
+| **Encargo** | El trabajo de auditoría acordado — alcance, criterio, periodo y entregables |
 | **Alcance** | Qué se audita y qué queda expresamente fuera |
 | **Criterio de auditoría** | La norma, política o requisito contra el cual se compara lo observado |
 | **Condición** | Lo que se encontró en la realidad |
@@ -46,7 +46,7 @@ Las siglas de normas se citan como aparecen en la norma original. Los términos 
 | **Prueba de cumplimiento** | Verifica que un control opera como está diseñado |
 | **Prueba sustantiva** | Verifica directamente el dato o el saldo, sin apoyarse en el control |
 | **Población** | El conjunto completo de transacciones del periodo auditado |
-| **Muestreo** | Examinar una parte para concluir sobre el todo. Con CAAT suele evitarse: se prueba el 100 % |
+| **Muestreo** | Examinar una parte para concluir sobre el todo. Con CAAT suele evitarse se prueba el 100 % |
 | **Ley de Benford** | Distribución esperada del primer dígito en poblaciones naturales de montos. Señala dónde mirar, no prueba fraude |
 | **Fraccionamiento** | Dividir una compra para que cada parte quede bajo el umbral que exige aprobación |
 | **Autoaprobación** | Que quien registra una operación sea quien la aprueba |
@@ -62,7 +62,7 @@ Las siglas de normas se citan como aparecen en la norma original. Los términos 
 | **ITAF** | *Information Technology Assurance Framework*, de ISACA. Estándares de la profesión |
 | **Código de Ética de ISACA** | Principios que rigen la conducta del auditor de sistemas |
 | **COBIT 2019** | Marco de gobierno y gestión de TI, base del criterio de auditoría |
-| **COSO 2013** | Marco de control interno: cinco componentes y diecisiete principios |
+| **COSO 2013** | **Marco de control interno.** Cinco componentes y diecisiete principios |
 | **NTP-ISO/IEC 27001** | Norma técnica peruana de gestión de seguridad de la información |
 | **NTP-ISO/IEC 12207** | Norma técnica peruana de procesos del ciclo de vida del software |
 | **ISO 22301:2019** | Norma de gestión de continuidad del negocio |

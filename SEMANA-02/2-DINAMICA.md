@@ -8,11 +8,60 @@
 
 ---
 
-## Qué se busca con esta actividad
+## Cómo funciona la actividad
+
+```mermaid
+flowchart LR
+    C["<b>Consigna</b><br/>El organigrama tóxico"]
+    P["<b>Producto</b><br/>el resultado de la actividad,<br/>en la plantilla de dinámica"]
+    E["<b>Exposición</b><br/>el grupo lee y explica<br/>su resultado, sin diapositivas"]
+    G["<b>Entrega</b><br/>PDF formateado,<br/>después de la clase"]
+    R["<b>Rúbrica</b><br/>nota cognitiva"]
+    C --> P --> E --> G --> R
+    classDef d fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
+    class C,P,E,G,R d;
+```
+
+## Qué entregas
+
+| | |
+|---|---|
+| **Archivo** | `SI084-S02-DINAMICA-Grupo<N>.pdf` |
+| **Plantilla obligatoria** | [SI084-PLANTILLA-DINAMICA.docx](../PLANTILLAS/SI084-PLANTILLA-DINAMICA.docx) |
+| **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT y los apellidos, nombres y códigos de todos los integrantes |
+| **Qué va dentro** | Lo que el grupo resolvió en aula. Las tablas de la sección **Producto** van completas, con los textos redactados, y cada decisión va justificada |
+| **Dónde se sube** | Aula virtual, tarea «Dinámica · Semana 02» |
+| **Cuándo vence** | Hasta 24 h después de la sesión de teoría. La tabla se resuelve en aula; el PDF se formatea y se sube después |
+| **Exposición** | En la ronda de cierre de **esta misma sesión**. El grupo **lee y explica su resultado** ante el aula, con el documento a la vista. No se usan diapositivas |
+
+> No se califica un trabajo entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con las tablas del producto vacías.
+
+---
+
+## Consigna
+
+> **«El organigrama tóxico»**
+> Cada equipo recibe **la estructura y la matriz de accesos de una de las diez organizaciones** de esta página (está en la sección **Con qué material se trabaja** de esta página), con el detalle de qué roles del ERP tiene asignado cada persona. El equipo debe **detectar las combinaciones tóxicas de segregación de funciones y proponer controles compensatorios viables para el tamaño de la empresa**.
+
+| | |
+|---|---|
+| **Su papel** | **Auditor de accesos** ante una empresa con tres personas en todo el área de TI |
+| **Misión** | Detectar las combinaciones tóxicas y proponer controles compensatorios que esa empresa **pueda aplicar** |
+| **Restricción** | **No vale «contratar más gente».** La organización tiene el personal que tiene y no va a crecer |
 
 Que el equipo detecte, sobre datos reales de su organización, las combinaciones de accesos que permiten a una sola persona cometer y ocultar un error o un fraude, y que resuelva el problema que aparece siempre en una empresa pequeña, donde no hay gente suficiente para separar todas las funciones.
 
-## Con qué material se trabaja
+## Cómo se desarrolla · 35 minutos
+
+| | Bloque | Quién | Minutos |
+|---|---|---|---|
+| **1** | **Leer la estructura.** Se lee la cabecera de la organización asignada y se anota el número real de personas por área. **El tamaño manda**. Con dos personas en un área, separar cuatro funciones es imposible y el análisis debe reconocerlo desde el principio. | Equipo | 7 |
+| **2** | **Cruzar personas y roles.** Sobre la tabla de accesos se marca a cada persona que reúne un rol de **registrar** y un rol de **aprobar** dentro del mismo ciclo, o de **crear el maestro** y **operar sobre él**. Se revisan además las cuentas genéricas sin responsable y las cuentas de personas que ya cesaron. | Equipo | 7 |
+| **3** | **Enunciar el riesgo.** Por cada combinación se escribe qué podría hacer esa persona sola y sin que nadie lo note. Un conflicto sin riesgo redactado no se califica, porque no se puede discutir con la gerencia. | Equipo | 7 |
+| **4** | **Decidir qué no se elimina.** Se elige al menos un conflicto que el equipo **decide mantener** por falta de personal, y se diseña su control compensatorio con frecuencia, responsable y la evidencia que dejaría. | Equipo | 7 |
+| **5** | **Severidad.** Se ordena la matriz por severidad, justificando el orden con lo que cada conflicto pone en juego en esa organización concreta. | Equipo | 7 |
+
+## Material de trabajo
 
 **Todo lo que se necesita está en esta página.** No se busca información en internet ni se visita ninguna empresa. Se **asigna una organización a cada equipo al iniciar la actividad**, de las diez del cuadro siguiente. Cada una tiene su propia estructura, su propio personal y sus propios accesos, de modo que **ningún equipo llega a la misma matriz de conflictos que otro**.
 
@@ -199,37 +248,6 @@ Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan 
 | [Los principios que sostienen el diseño de controles](1-TEORIA.md) | Segregación de funciones y mínimo privilegio son el criterio que permite llamar tóxica a una combinación. Sin ese criterio la matriz es una opinión |
 | [Roles y responsabilidades en seguridad de la información](1-TEORIA.md) | Define quién debe responder por cada acceso, que es la columna que convierte el conflicto en algo exigible |
 | [Información y seguridad de la información](1-TEORIA.md) | Integridad y trazabilidad son las propiedades que un conflicto de segregación destruye, y así se enuncia el riesgo |
-
-## Cómo se desarrolla · 35 minutos
-
-| | Bloque | Quién | Minutos |
-|---|---|---|---|
-| **1** | **Leer la estructura.** Se lee la cabecera de la organización asignada y se anota el número real de personas por área. **El tamaño manda**: con dos personas en un área, separar cuatro funciones es imposible y el análisis debe reconocerlo desde el principio. | Equipo | 7 |
-| **2** | **Cruzar personas y roles.** Sobre la tabla de accesos se marca a cada persona que reúne un rol de **registrar** y un rol de **aprobar** dentro del mismo ciclo, o de **crear el maestro** y **operar sobre él**. Se revisan además las cuentas genéricas sin responsable y las cuentas de personas que ya cesaron. | Equipo | 7 |
-| **3** | **Enunciar el riesgo.** Por cada combinación se escribe qué podría hacer esa persona sola y sin que nadie lo note. Un conflicto sin riesgo redactado no se califica, porque no se puede discutir con la gerencia. | Equipo | 7 |
-| **4** | **Decidir qué no se elimina.** Se elige al menos un conflicto que el equipo **decide mantener** por falta de personal, y se diseña su control compensatorio con frecuencia, responsable y la evidencia que dejaría. | Equipo | 7 |
-| **5** | **Severidad.** Se ordena la matriz por severidad, justificando el orden con lo que cada conflicto pone en juego en esa organización concreta. | Equipo | 7 |
-
-## Qué entregas
-
-| | |
-|---|---|
-| **Archivo** | `SI084-S02-DINAMICA-Grupo<N>.pdf` |
-| **Plantilla obligatoria** | [SI084-PLANTILLA-DINAMICA.docx](../PLANTILLAS/SI084-PLANTILLA-DINAMICA.docx) |
-| **Formato** | PDF exportado desde la plantilla en Word, con la carátula de la UPT y los apellidos, nombres y códigos de todos los integrantes |
-| **Qué va dentro** | Lo que el grupo resolvió en aula. Las tablas de la sección **Producto** van completas, con los textos redactados, y cada decisión va justificada |
-| **Dónde se sube** | Aula virtual, tarea «Dinámica · Semana 02» |
-| **Cuándo vence** | Hasta 24 h después de la sesión de teoría. La tabla se resuelve en aula; el PDF se formatea y se sube después |
-| **Exposición** | En la ronda de cierre de **esta misma sesión**. El grupo **lee y explica su resultado** ante el aula, con el documento a la vista. No se usan diapositivas |
-
-> No se califica un trabajo entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con las tablas del producto vacías.
-
----
-
-## Consigna
-
-> **«El organigrama tóxico»**
-> Cada equipo recibe **la estructura y la matriz de accesos de una de las diez organizaciones** de esta página (está en la sección **Con qué material se trabaja** de esta página), con el detalle de qué roles del ERP tiene asignado cada persona. El equipo debe **detectar las combinaciones tóxicas de segregación de funciones y proponer controles compensatorios viables para el tamaño de la empresa**.
 
 ## Producto
 

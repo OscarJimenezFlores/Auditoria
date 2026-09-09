@@ -17,9 +17,11 @@ flowchart TD
     PC["<b>Paso C</b><br/>Capturar la línea base del<br/>sistema auditado<br/><i>10 min</i>"]
     PD["<b>Paso D</b><br/>Sellar la evidencia (cadena de<br/>custodia)<br/><i>10 min</i>"]
     PE["<b>Paso E</b><br/>Primer hallazgo documentado<br/><i>10 min</i>"]
-    PA --> PB --> PC --> PD --> PE
+    PF["<b>Paso F</b><br/>Validar y corregir<br/><i>25 min</i>"]
+    PG["<b>Paso G</b><br/>Registrar y cerrar<br/><i>15 min</i>"]
+    PA --> PB --> PC --> PD --> PE --> PF --> PG
     classDef paso fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
-    class PA,PB,PC,PD,PE paso;
+    class PA,PB,PC,PD,PE,PF,PG paso;
 ```
 
 ## Qué entregas
@@ -36,6 +38,14 @@ flowchart TD
 > No se califica un informe entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con resultados declarados sin evidencia.
 
 ---
+
+## El reto
+
+| | |
+|---|---|
+| **Situación** | El encargo empieza mañana y no hay dónde guardar la evidencia. Lo que se recoja sin custodia no servirá ante nadie. |
+| **Misión** | Montar el laboratorio, capturar la línea base del sistema auditado y sellarla de modo que cualquiera pueda comprobar que no se alteró. |
+| **Criterio de éxito** | Un tercero puede verificar por sí mismo que la evidencia entregada es la que se capturó, sin creer en la palabra del equipo. |
 
 ## 1. Información sobre el evento práctico
 
@@ -124,7 +134,7 @@ git init
 |---|---|
 | `00_administracion` | Acta de acuerdo, acuerdo de confidencialidad, declaración de independencia |
 | `10_planificacion` | Plan y programa de auditoría (Unidad II) |
-| `20_evidencia` | Evidencia cruda: capturas, exportaciones, salidas de herramientas |
+| `20_evidencia` | **Evidencia cruda.** Capturas, exportaciones, salidas de herramientas |
 | `30_papeles_trabajo` | Análisis del auditor sobre la evidencia |
 | `40_hallazgos` | Un archivo por hallazgo, con estructura CCCER |
 | `50_informe` | Informe final (Unidad III) |
@@ -341,7 +351,21 @@ Plazo: 30 días.
 
 ---
 
+### Paso F — Validar y corregir (25 min)
 
+El resultado no vale por estar hecho, sino por resistir una comprobación. Se ejecutan estas tres y **se corrige lo que falle antes de cerrar la sesión**.
+
+1. Recalcular los hashes de `SHA256SUMS_E01.txt` y comprobar que todos coinciden con los artefactos entregados.
+2. Verificar que la cadena de custodia tiene fila para **cada** artefacto y que las horas están en UTC, no en hora local.
+3. Comprobar que ningún servicio del laboratorio quedó publicado fuera de `127.0.0.1`.
+
+> Lo que no se pueda corregir hoy se anota en la sección **Problemas y mejoras** de la evidencia, con lo que faltó y por qué. Un resultado parcial documentado con honestidad vale más que uno declarado sin prueba.
+
+### Paso G — Registrar la evidencia y cerrar (15 min)
+
+Se versiona lo producido, se anota la URL de cada resultado y se responde en dos frases la pregunta de transferencia — **qué riesgo correría una organización real si esto se hiciera mal**.
+
+---
 
 ## 3. Resultados
 
@@ -366,9 +390,19 @@ Plazo: 30 días.
 >
 > **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
-### 3.1. Tabla de resultados
+### 3.1. Los tres resultados que se califican
 
+Son los que la rúbrica evalúa. El resto de la lista tiene que existir, pero no se califica fila por fila.
 
+| Resultado | Qué demuestra | Dónde está |
+|---|---|---|
+| **La línea base sellada** | Los seis artefactos capturados y su hash registrado | `20_evidencia/E01_baseline` y `SHA256SUMS_E01.txt` |
+| **La cadena de custodia** | Una fila completa por artefacto, con hora en UTC | `CADENA_DE_CUSTODIA.md` |
+| **El primer hallazgo** | Los cinco bloques de la estructura CCCER, con su criterio citado | `40_hallazgos/H-001.md` |
+
+### 3.2. Lista de comprobación del taller
+
+Todo esto debe existir al cerrar la sesión.
 
 Al término de la práctica el estudiante debe evidenciar:
 
@@ -381,7 +415,6 @@ Al término de la práctica el estudiante debe evidenciar:
 | 5 | `CADENA_DE_CUSTODIA.md` con las filas completas y horas en UTC | Contenido del archivo |
 | 6 | Hallazgo `H-001.md` con los cinco bloques de la estructura CCCER | Contenido del archivo |
 | 7 | Demostración de que modificar un artefacto rompe el hash registrado | Captura del antes y el después |
-
 
 ## Rúbrica procedimental (20 puntos)
 

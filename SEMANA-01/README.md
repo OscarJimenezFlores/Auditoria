@@ -90,7 +90,7 @@ flowchart LR
 | **Atributo que mide el curso** | **AG-I02 · Ética** |
 | **Qué significa** | Aplicar los principios éticos, la ética profesional y las normas de la práctica de la ingeniería, adherirse al marco legal pertinente y respetar la diversidad de los grupos humanos |
 | **Semanas en que se recoge evidencia** | 08, 09, 11, 16 y 17 |
-| **Sobre qué evidencia** | La que ya entregas: dinámicas, informes de taller y la sustentación final. No hay entregable adicional |
+| **Sobre qué evidencia** | **La que ya entregas.** Dinámicas, informes de taller y la sustentación final. No hay entregable adicional |
 | **Efecto en tu calificación** | **Ninguno.** Mide el programa, no al estudiante. Se registra aparte de las actas |
 | **Dónde consultarlo** | [`ASSESSMENT/`](../ASSESSMENT/) · [rúbrica](../ASSESSMENT/RUBRICAS-AG.md) · [mapa](../ASSESSMENT/MAPA-AG.md) |
 

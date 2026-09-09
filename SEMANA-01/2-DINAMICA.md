@@ -8,33 +8,19 @@
 
 ---
 
-## Qué se busca con esta actividad
+## Cómo funciona la actividad
 
-Que el equipo produzca su primer hallazgo de auditoría formal, con las cinco partes que lo hacen exigible. El objetivo no es detectar el problema técnico, que está a la vista, sino redactarlo de modo que la organización auditada no pueda discutirlo.
-
-## Con qué material se trabaja
-
-**Esta semana todos los equipos trabajan sobre la misma evidencia.** La asignación de organizaciones del banco de casos se define en esta sesión, así que la evidencia de hoy es común y está íntegra en la sección **Material de trabajo** de esta página. Desde la Semana 02 cada equipo trabaja con su propia organización.
-
-## Lo que la teoría de hoy te da
-
-Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan tal cual, sin buscar nada más.
-
-| De la teoría | Para qué se usa aquí |
-|---|---|
-| [El triángulo irreductible](1-TEORIA.md) | De ahí salen tres de los cinco bloques del producto. Sin criterio citado no hay hallazgo, hay opinión |
-| [Qué es auditar](1-TEORIA.md) | Fija por qué la condición se redacta sin adjetivos y siempre contra un criterio externo |
-| [El técnico y el auditor](1-TEORIA.md) | Es el estándar de redacción que la rúbrica exige. La columna derecha de esa tabla es el nivel esperado |
-
-## Cómo se desarrolla · 35 minutos
-
-| | Bloque | Quién | Minutos |
-|---|---|---|---|
-| **1** | **Leer la evidencia.** Se recorren los tres fragmentos entregados y se anota **solo lo que se ve**, en frases sin adjetivos. «Tres cuentas figuran en el grupo de administradores» es un hecho; «los accesos están mal gestionados» es una opinión y no entra. | Equipo | 7 |
-| **2** | **Condición.** Se redacta qué se observó, con cantidades y con el sistema nombrado. La prueba de que está bien escrita es que el auditado pueda verificarla por su cuenta y llegue al mismo número. | Equipo | 7 |
-| **3** | **Criterio.** Se ubica el control del Anexo A de la ISO/IEC 27001:2022 que se incumple y **se cita con su código**. Si el equipo no encuentra el control, revisa si lo que halló es realmente un incumplimiento o solo algo que le desagrada. | Equipo | 7 |
-| **4** | **Causa y efecto.** La causa responde por qué ocurre, y no puede ser el síntoma otra vez. El efecto se cuantifica siempre que el dato lo permita, en soles, en horas de interrupción o en exposición legal. | Equipo | 7 |
-| **5** | **Recomendación.** Acción específica, con responsable por cargo y plazo sugerido. «Mejorar la gestión de accesos» no es accionable; «revocar las tres cuentas compartidas y emitir una nominal por persona, Jefatura de TI, 15 días» sí lo es. | Equipo | 7 |
+```mermaid
+flowchart LR
+    C["<b>Consigna</b><br/>El hallazgo de cinco líneas"]
+    P["<b>Producto</b><br/>el resultado de la actividad,<br/>en la plantilla de dinámica"]
+    E["<b>Exposición</b><br/>el grupo lee y explica<br/>su resultado, sin diapositivas"]
+    G["<b>Entrega</b><br/>PDF formateado,<br/>después de la clase"]
+    R["<b>Rúbrica</b><br/>nota cognitiva"]
+    C --> P --> E --> G --> R
+    classDef d fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
+    class C,P,E,G,R d;
+```
 
 ## Qué entregas
 
@@ -56,6 +42,24 @@ Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan 
 
 > **«El hallazgo de cinco líneas»**
 > El equipo recibe un **extracto de evidencia real anonimizada**, con un fragmento de `/etc/passwd`, la matriz de usuarios de un ERP con tres cuentas compartidas y el correo del jefe de TI justificando la práctica. Debe convertir ese material en **un hallazgo de auditoría formal**.
+
+| | |
+|---|---|
+| **Su papel** | **Auditor junior** en su primer encargo, que entrega el hallazgo hoy |
+| **Misión** | Convertir el extracto de evidencia en un hallazgo que la organización **no pueda discutir** |
+| **Restricción** | **Ni un adjetivo en la condición.** Todo lo que se afirme debe poder señalarse con el dedo en el extracto |
+
+Que el equipo produzca su primer hallazgo de auditoría formal, con las cinco partes que lo hacen exigible. El objetivo no es detectar el problema técnico, que está a la vista, sino redactarlo de modo que la organización auditada no pueda discutirlo.
+
+## Cómo se desarrolla · 35 minutos
+
+| | Bloque | Quién | Minutos |
+|---|---|---|---|
+| **1** | **Leer la evidencia.** Se recorren los tres fragmentos entregados y se anota **solo lo que se ve**, en frases sin adjetivos. «Tres cuentas figuran en el grupo de administradores» es un hecho; «los accesos están mal gestionados» es una opinión y no entra. | Equipo | 7 |
+| **2** | **Condición.** Se redacta qué se observó, con cantidades y con el sistema nombrado. La prueba de que está bien escrita es que el auditado pueda verificarla por su cuenta y llegue al mismo número. | Equipo | 7 |
+| **3** | **Criterio.** Se ubica el control del Anexo A de la ISO/IEC 27001:2022 que se incumple y **se cita con su código**. Si el equipo no encuentra el control, revisa si lo que halló es realmente un incumplimiento o solo algo que le desagrada. | Equipo | 7 |
+| **4** | **Causa y efecto.** La causa responde por qué ocurre, y no puede ser el síntoma otra vez. El efecto se cuantifica siempre que el dato lo permita, en soles, en horas de interrupción o en exposición legal. | Equipo | 7 |
+| **5** | **Recomendación.** Acción específica, con responsable por cargo y plazo sugerido. «Mejorar la gestión de accesos» no es accionable; «revocar las tres cuentas compartidas y emitir una nominal por persona, Jefatura de TI, 15 días» sí lo es. | Equipo | 7 |
 
 ## Material de trabajo
 
@@ -108,6 +112,16 @@ $ grep "Accepted password" /var/log/auth.log | awk '{print $9}' | sort | uniq -c
 ```
 
 **Dato de contexto.** El servidor `srv-erp-01` aloja la base de datos del ERP, que contiene la contabilidad, la planilla y el maestro de proveedores de la empresa.
+
+## Lo que la teoría de hoy te da
+
+Esta dinámica aplica piezas concretas de la sesión de teoría de hoy. Se usan tal cual, sin buscar nada más.
+
+| De la teoría | Para qué se usa aquí |
+|---|---|
+| [El triángulo irreductible](1-TEORIA.md) | De ahí salen tres de los cinco bloques del producto. Sin criterio citado no hay hallazgo, hay opinión |
+| [Qué es auditar](1-TEORIA.md) | Fija por qué la condición se redacta sin adjetivos y siempre contra un criterio externo |
+| [El técnico y el auditor](1-TEORIA.md) | Es el estándar de redacción que la rúbrica exige. La columna derecha de esa tabla es el nivel esperado |
 
 ## Producto
 

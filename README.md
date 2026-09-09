@@ -88,6 +88,17 @@ flowchart LR
     class PF p;
 ```
 
+## Los dos documentos que construyes
+
+El curso produce dos entregables encadenados, uno por unidad, y cada uno tiene su modelo con el índice completo y de qué semana sale cada sección.
+
+| Documento | Unidad | Semanas | Qué es |
+|---|---|---|---|
+| **[Modelo del Plan de Auditoría](MODELO-PLAN-DE-AUDITORIA.md)** | II | 07 a 12 | El Plan Integral de Auditoría de Sistemas, con sus doce secciones y sus cinco anexos. Se aprueba en la Semana 12 |
+| **[Modelo del Informe de Auditoría](MODELO-INFORME-DE-AUDITORIA.md)** | III | 13 a 17 | El Informe Final de Auditoría de Sistemas, con sus siete secciones y sus seis anexos. Se sustenta en la Semana 17 |
+
+> **El segundo se construye sobre el primero.** Lo que el plan declara como alcance es exactamente sobre lo que el informe puede concluir, y **lo que el plan excluye no admite conclusión después**. Abrir el modelo desde la Semana 07 evita llegar a la Semana 12 con secciones que nadie escribió.
+
 ## Índice de semanas
 
 Cada semana es una carpeta con cuatro documentos — la portada, la teoría de la sesión de aula, la dinámica de aula evaluada como nota cognitiva y la guía del taller de laboratorio.
@@ -252,7 +263,7 @@ El curso contribuye al **Plan de Assessment de la Escuela**, que mide los once A
 
 > **No afecta la calificación.** La rúbrica del atributo se aplica sobre los mismos entregables que el curso ya exige, con un registro paralelo al de notas. El estudiante no entrega nada adicional.
 
-Por estar en el ciclo X y sobre una empresa real, este curso es el **punto de medición terminal** del AG-I02 para el programa. La captura individual es la sustentación de la Semana 17.
+Por estar en el ciclo X y sobre una empresa real, este curso es el **punto de medición terminal** del AG-I02 para el programa. Las dos capturas que se registran son la de la **Semana 05** y la de la **Semana 16**.
 
 Todo el instrumental está en [`ASSESSMENT/`](ASSESSMENT/) — el [mapa del atributo semana a semana](ASSESSMENT/MAPA-AG.md), la [rúbrica](ASSESSMENT/RUBRICAS-AG.md), la [ficha de evidencia](ASSESSMENT/PLANTILLA-EVIDENCIA-AG.md) que se llena en cada captura, el registro por estudiante y la [plantilla del informe de assessment](ASSESSMENT/PLANTILLA-INFORME-ASSESSMENT.md) del ciclo.
 

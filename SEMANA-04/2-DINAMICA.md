@@ -43,6 +43,12 @@ flowchart LR
 > **«El control que no se puede creer»**
 > Sobre la narrativa del proceso de compras y pagos que está en **Material de trabajo**, su equipo debe identificar **tres riesgos**, decir qué control existe para cada uno —o que no existe ninguno— y clasificarlo. **Después, dos conclusiones.** Qué control **no se puede concluir efectivo** por culpa del entorno de TI, y cuál falla **el diseño** y cuál **la eficacia operativa**.
 
+| | |
+|---|---|
+| **Su papel** | **Auditor financiero** que debe decidir si puede apoyarse en los controles de la aplicación |
+| **Misión** | Identificar tres riesgos con su control y concluir cuál **no se puede dar por efectivo** por culpa del entorno de TI |
+| **Restricción** | **Ningún control se declara efectivo sin decir qué ITGC lo sostiene.** Si el ITGC falla, el control de aplicación cae con él |
+
 Es el concepto que la teoría llama el más importante de la semana. *Los controles de aplicación solo son confiables si los ITGC (controles generales de TI) son efectivos.* Aquí se comprueba con un proceso real.
 
 ## Cómo se desarrolla · 35 minutos
@@ -79,7 +85,7 @@ Trabaja sobre esta narrativa. Es el proceso de compras y pagos de una empresa di
 | ERP, módulo Compras | Requisición, orden de compra, recepción | Compras, Almacén, Jefe de Administración |
 | ERP, módulo Contabilidad | Registro de factura y cruce de tres vías | Contabilidad |
 | Hoja de cálculo de propuesta de pago | Consolida las facturas conformes y los pagos directos | Tesorería |
-| Banca en línea | Ejecución del pago | Tesorería, con doble clave: la suya y un token físico que guarda el Jefe de Administración |
+| Banca en línea | Ejecución del pago | **Tesorería, con doble clave.** La suya y un token físico que guarda el Jefe de Administración |
 | Correo institucional | Aprobación de la propuesta de pago | Jefe de Administración |
 
 **Datos del período**

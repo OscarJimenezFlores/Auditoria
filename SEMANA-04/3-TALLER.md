@@ -17,9 +17,11 @@ flowchart TD
     PC["<b>Paso C</b><br/>CIS Docker Benchmark con<br/>Docker Bench<br/><i>10 min</i>"]
     PD["<b>Paso D</b><br/>Vulnerabilidades, IaC y<br/>secretos con Trivy<br/><i>15 min</i>"]
     PE["<b>Paso E</b><br/>Consolidar en una matriz de<br/>control única<br/><i>10 min</i>"]
-    PA --> PB --> PC --> PD --> PE
+    PF["<b>Paso F</b><br/>Validar y corregir<br/><i>25 min</i>"]
+    PG["<b>Paso G</b><br/>Registrar y cerrar<br/><i>15 min</i>"]
+    PA --> PB --> PC --> PD --> PE --> PF --> PG
     classDef paso fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
-    class PA,PB,PC,PD,PE paso;
+    class PA,PB,PC,PD,PE,PF,PG paso;
 ```
 
 ## Qué entregas
@@ -36,6 +38,14 @@ flowchart TD
 > No se califica un informe entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con resultados declarados sin evidencia.
 
 ---
+
+## El reto
+
+| | |
+|---|---|
+| **Situación** | Cuatro herramientas devuelven cuatro listas que no hablan entre sí. Nadie puede decir cuántos controles fallan, porque cada una los cuenta a su manera. |
+| **Misión** | Consolidar las cuatro salidas en una matriz única mapeada a ISO/IEC 27001 y COBIT 2019, y clasificar a mano lo que la automatización no supo clasificar. |
+| **Criterio de éxito** | Menos del 20 % de los hallazgos queda «Sin clasificar», y al menos uno se analiza como deficiencia de diseño frente a deficiencia de eficacia operativa. |
 
 ## 1. Información sobre el evento práctico
 
@@ -85,8 +95,6 @@ Evaluación automatizada de controles generales de TI mediante herramientas libr
 ## 2. Procedimiento o Metodología
 
 > **Documento del caso para esta semana.** La organización entrega **Narrativa del proceso de compras y pagos**, en `CASOS/EMPRESA-<NN>-<slug>/documentos/narrativa-proceso-compras.md`. Es consistente con los datos de `datos/`. Las personas, usuarios y proveedores que menciona existen en los archivos. **No señala sus debilidades**; declara lo que la organización dice hacer.
-
-
 
 ### Paso A — Auditoría del sistema anfitrión con Lynis
 
@@ -212,7 +220,7 @@ for f in glob.glob("../20_evidencia/E04_config/trivy_*.json"):
 
 m = pd.DataFrame(filas)
 
-# --- MAPEO AL CRITERIO: sin esto la salida es ruido, no auditoría ---
+# --- MAPEO AL CRITERIO · sin esto la salida es ruido, no auditoría ---
 MAPEO = [
     (r"root|privileg|capab",              "A.8.2 Privileged access rights",        "DSS05.04"),
     (r"password|credential|secret|auth",  "A.5.17 Authentication information",     "DSS05.04"),
@@ -247,7 +255,21 @@ git add . && git commit -m "E04: auditoria de configuracion segura y matriz de c
 
 ---
 
+### Paso F — Validar y corregir (25 min)
 
+El resultado no vale por estar hecho, sino por resistir una comprobación. Se ejecutan estas tres y **se corrige lo que falle antes de cerrar la sesión**.
+
+1. Contar el porcentaje de hallazgos «Sin clasificar» en la matriz y comprobar que está por debajo del 20 %.
+2. Verificar que cada regla fallida de severidad alta lleva su identificador XCCDF, no solo su descripción.
+3. Comprobar que el control analizado como deficiencia de **diseño** lo es de verdad. El control no existe, frente a existe pero no opera.
+
+> Lo que no se pueda corregir hoy se anota en la sección **Problemas y mejoras** de la evidencia, con lo que faltó y por qué. Un resultado parcial documentado con honestidad vale más que uno declarado sin prueba.
+
+### Paso G — Registrar la evidencia y cerrar (15 min)
+
+Se versiona lo producido, se anota la URL de cada resultado y se responde en dos frases la pregunta de transferencia — **qué riesgo correría una organización real si esto se hiciera mal**.
+
+---
 
 ## 3. Resultados
 
@@ -272,21 +294,30 @@ git add . && git commit -m "E04: auditoria de configuracion segura y matriz de c
 >
 > **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
-### 3.1. Tabla de resultados
+### 3.1. Los tres resultados que se califican
 
+Son los que la rúbrica evalúa. El resto de la lista tiene que existir, pero no se califica fila por fila.
 
+| Resultado | Qué demuestra | Dónde está |
+|---|---|---|
+| **La matriz de control única** | Los hallazgos de las cuatro herramientas mapeados a ISO/IEC 27001 y COBIT 2019 | `PT04_matriz_control.csv` |
+| **La clasificación completada** | Menos del 20 % sin clasificar, con el resto resuelto a mano | Salida del script |
+| **Diseño frente a eficacia operativa** | Un control analizado en ambos planos, con su justificación | Papel de trabajo |
+
+### 3.2. Lista de comprobación del taller
+
+Todo esto debe existir al cerrar la sesión.
 
 | # | Resultado esperado | Verificación |
 |---|---|---|
 | 1 | `lynis-report.dat` con `hardening_index` extraído y las 3 advertencias de mayor severidad analizadas | Papel de trabajo |
 | 2 | `oscap-reporte.html` con el perfil evaluado y las 5 reglas fallidas de severidad alta con su identificador XCCDF | Reporte HTML |
 | 3 | `docker-bench.log` con el conteo de `[WARN]` y el análisis de las secciones 4 y 5 | Log y papel de trabajo |
-| 4 | Reportes de Trivy: imágenes, IaC, secretos y **un SBOM en CycloneDX** | Archivos generados |
+| 4 | **Reportes de Trivy.** Imágenes, IaC, secretos y **un SBOM en CycloneDX** | Archivos generados |
 | 5 | `PT04_matriz_control.csv` con todos los hallazgos mapeados a ISO/IEC 27001 y COBIT 2019 | Contenido del CSV |
 | 6 | **Menos del 20 % de hallazgos «Sin clasificar»**, con los restantes clasificados manualmente | Salida del script |
 | 7 | Un control analizado explícitamente como deficiencia de **diseño** vs. de **eficacia operativa**, con justificación | Papel de trabajo |
 | 8 | Hashes en la cadena de custodia y *commit* en Git | `SHA256SUMS_E04.txt` |
-
 
 ## Rúbrica procedimental (20 puntos)
 

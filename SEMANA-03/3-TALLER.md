@@ -17,9 +17,11 @@ flowchart TD
     PC["<b>Paso C</b><br/>Escaneo de vulnerabilidades<br/><i>10 min</i>"]
     PD["<b>Paso D</b><br/>Convertir hallazgos técnicos<br/>en riesgos de negocio<br/><i>20 min</i>"]
     PE["<b>Paso E</b><br/>Tratamiento y extracto de la<br/>Declaración de Aplicabilidad<br/><i>15 min</i>"]
-    PA --> PB --> PC --> PD --> PE
+    PF["<b>Paso F</b><br/>Validar y corregir<br/><i>25 min</i>"]
+    PG["<b>Paso G</b><br/>Registrar y cerrar<br/><i>15 min</i>"]
+    PA --> PB --> PC --> PD --> PE --> PF --> PG
     classDef paso fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
-    class PA,PB,PC,PD,PE paso;
+    class PA,PB,PC,PD,PE,PF,PG paso;
 ```
 
 ## Qué entregas
@@ -36,6 +38,14 @@ flowchart TD
 > No se califica un informe entregado en `.docx`, sin carátula, sin los códigos de los integrantes o con resultados declarados sin evidencia.
 
 ---
+
+## El reto
+
+| | |
+|---|---|
+| **Situación** | El escáner devuelve cientos de vulnerabilidades ordenadas por CVSS. La gerencia pregunta cuáles importan y el CVSS no lo sabe, porque no conoce el negocio. |
+| **Misión** | Convertir hallazgos técnicos en riesgos de negocio con probabilidad e impacto justificados, y demostrar con dos casos que el orden cambia. |
+| **Criterio de éxito** | Existen dos casos documentados donde el orden por riesgo de negocio contradice al orden por CVSS, con la razón escrita. |
 
 ## 1. Información sobre el evento práctico
 
@@ -85,8 +95,6 @@ Apreciación y tratamiento del riesgo de seguridad de la información sobre el e
 ## 2. Procedimiento o Metodología
 
 > **Documento del caso para esta semana.** La organización entrega **Relato del incidente del periodo**, en `CASOS/EMPRESA-<NN>-<slug>/documentos/incidente-detallado.md`. Es consistente con los datos de `datos/`. Las personas, usuarios y proveedores que menciona existen en los archivos. **No señala sus debilidades**; declara lo que la organización dice hacer.
-
-
 
 ### Paso A — Desplegar Greenbone e iniciar la sincronización
 
@@ -174,7 +182,7 @@ import pandas as pd
 v = pd.read_csv("../20_evidencia/E03_scan/reporte_greenbone.csv")
 v = v[v["Severity"] >= 4.0]      # se descartan los informativos
 
-# --- CONTEXTO DE NEGOCIO: sin esto, el CVSS no significa nada ---
+# --- CONTEXTO DE NEGOCIO · sin esto, el CVSS no significa nada ---
 ACTIVOS = {
     "si084_db":        dict(nombre="Base de datos ERP",  dueno="Gerencia de Finanzas",
                             clasificacion="Restringida", expuesto=False, criticidad=5),
@@ -251,7 +259,21 @@ git add . && git commit -m "E03: escaneo de vulnerabilidades, registro de riesgo
 
 ---
 
+### Paso F — Validar y corregir (25 min)
 
+El resultado no vale por estar hecho, sino por resistir una comprobación. Se ejecutan estas tres y **se corrige lo que falle antes de cerrar la sesión**.
+
+1. Comprobar que las escalas 1–5 tienen **definición operativa escrita**, y que dos personas distintas calificarían igual con ellas.
+2. Verificar que los dos casos contrastantes existen y que la explicación nombra el factor de negocio que cambió el orden.
+3. Revisar que el extracto de la Declaración de Aplicabilidad incluye al menos un control **excluido con justificación**.
+
+> Lo que no se pueda corregir hoy se anota en la sección **Problemas y mejoras** de la evidencia, con lo que faltó y por qué. Un resultado parcial documentado con honestidad vale más que uno declarado sin prueba.
+
+### Paso G — Registrar la evidencia y cerrar (15 min)
+
+Se versiona lo producido, se anota la URL de cada resultado y se responde en dos frases la pregunta de transferencia — **qué riesgo correría una organización real si esto se hiciera mal**.
+
+---
 
 ## 3. Resultados
 
@@ -276,9 +298,19 @@ git add . && git commit -m "E03: escaneo de vulnerabilidades, registro de riesgo
 >
 > **El informe es lo que se califica; el repositorio es lo que lo prueba.** Cada resultado de la sección 3 del informe lleva la URL con la que se verifica, y **un resultado sin su URL se califica como no logrado**, por bien redactado que esté. Lo que no se puede abrir no se puede dar por hecho.
 
-### 3.1. Tabla de resultados
+### 3.1. Los tres resultados que se califican
 
+Son los que la rúbrica evalúa. El resto de la lista tiene que existir, pero no se califica fila por fila.
 
+| Resultado | Qué demuestra | Dónde está |
+|---|---|---|
+| **El registro de riesgos** | Diez riesgos con activo, dueño, CVE, probabilidad, impacto y nivel | `PT03_registro_riesgos.csv` |
+| **Los dos casos contrastantes** | CVSS alto con riesgo bajo y CVSS medio con riesgo crítico, explicados | Papel de trabajo |
+| **El extracto de la Declaración de Aplicabilidad** | Cinco controles, uno de ellos excluido con su fundamento | `PT03_soa_extracto.md` |
+
+### 3.2. Lista de comprobación del taller
+
+Todo esto debe existir al cerrar la sesión.
 
 | # | Resultado esperado | Verificación |
 |---|---|---|
@@ -286,11 +318,10 @@ git add . && git commit -m "E03: escaneo de vulnerabilidades, registro de riesgo
 | 2 | SimpleRisk configurado con escalas 1–5 **con definición operativa escrita** y criterio de aceptación | Captura de *Risk Formula* |
 | 3 | Reporte de escaneo en CSV y XML en `E03_scan/`, con la lista de objetivos autorizados | Listado y contenido |
 | 4 | `PT03_registro_riesgos.csv` con al menos 10 riesgos, cada uno con activo, dueño, CVE, probabilidad, impacto y nivel | Contenido del CSV |
-| 5 | **Dos casos contrastantes documentados**: CVSS alto / riesgo bajo y CVSS medio / riesgo crítico, con la explicación | Papel de trabajo |
+| 5 | **Dos casos contrastantes documentados**. CVSS alto / riesgo bajo y CVSS medio / riesgo crítico, con la explicación | Papel de trabajo |
 | 6 | Cinco riesgos cargados en SimpleRisk con su plan de tratamiento y control ISO mapeado | Captura de SimpleRisk |
 | 7 | Extracto de SoA con al menos 5 controles, incluyendo uno **excluido con justificación** | `PT03_soa_extracto.md` |
 | 8 | Hashes registrados en la cadena de custodia y *commit* en Git | `SHA256SUMS_E03.txt`, `git log` |
-
 
 ## Rúbrica procedimental (20 puntos)
 

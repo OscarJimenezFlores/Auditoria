@@ -8,59 +8,45 @@
 
 ---
 
-## Qué se trabaja en esta sesión
+## La pregunta de esta sesión
 
-- Taxonomía de los controles de auditoría.
-- Controles generales de TI.
-- Controles de aplicación sobre el ciclo del dato.
-- Controles físicos, ambientales y de calidad.
-- La Ley Sarbanes-Oxley y su equivalente peruano.
+Una distribuidora audita su sistema de ventas. El auditor toma la validación que impide aplicar un descuento mayor al 20 % y comprueba, transacción por transacción, que **ninguna de las 4 100 ventas del año superó ese límite**. El control funciona. Lo documenta como efectivo y cierra el papel de trabajo.
+
+Cuatro meses después, la empresa descubre que un vendedor aplicó descuentos del 45 % a tres clientes durante seis semanas. Las ventas están en el sistema, con su descuento, y **la validación sigue ahí, funcionando**.
+
+> **La pregunta que ordena esta sesión.** *¿Cómo puede un control que se verificó y funciona estar fallando desde antes de que se verificara?*
+
+## Antes de empezar
+
+| Lo que necesita traer | De dónde sale |
+|---|---|
+| Los principios de mínimo privilegio, segregación de funciones y rendición de cuentas | Semana 02 |
+| La estructura de un hallazgo — condición, criterio, causa, efecto, recomendación | Semana 01 |
+| La noción de riesgo y de tratamiento del riesgo | Semana 03 |
+| Qué es un objetivo de control y dónde vive en COBIT 2019 | Semana 03 |
+
+> **Exploración (5 min), antes de cualquier definición.** Sin abrir apuntes, el aula responde tres preguntas y las respuestas quedan a la vista para contrastarlas al cierre. *¿Qué pudo pasar con la validación del descuento? ¿Qué habría tenido que mirar el auditor y no miró? ¿A quién le pediría usted la evidencia?* No se corrige ninguna respuesta todavía.
 
 ## Distribución del tiempo
 
-| Bloque | Minutos |
+| Momento | Minutos |
 |---|---|
-| Taxonomía de los controles de auditoría | 15 |
-| Controles generales de TI | 15 |
-| Controles de aplicación sobre el ciclo del dato | 15 |
-| Controles físicos, ambientales y de calidad | 10 |
-| La Ley Sarbanes-Oxley y su equivalente peruano | 10 |
+| El problema del descuento y la exploración inicial | 10 |
+| **Bloque 1.** Qué es un control y cuándo actúa · con su microaplicación | 15 |
+| **Bloque 2.** Controles generales de TI y la dependencia jerárquica · con su microaplicación | 15 |
+| **Bloque 3.** Controles de aplicación sobre el ciclo del dato · con su microaplicación | 12 |
+| **Bloque 4.** Controles físicos, ambientales y de calidad | 5 |
+| **Bloque 5.** La Ley Sarbanes-Oxley y el régimen peruano | 5 |
+| Cierre, respuesta a la pregunta de la sesión y puente a la dinámica | 3 |
 | **Total de la sesión de aula** | **65** |
 
 ## Mapa de la sesión
 
-```mermaid
-flowchart TD
-    T["Taxonomía del control"]
-    G["Controles generales de TI<br/>aplican a todo el entorno"]
-    A["Controles de aplicación<br/>aplican a un proceso de negocio"]
-    G1["Acceso a programas y datos"]
-    G2["Gestión de cambios"]
-    G3["Desarrollo de programas"]
-    G4["Operaciones de cómputo"]
-    A1["Entrada, proceso y salida del dato"]
-    L["Ley Sarbanes-Oxley<br/>y su equivalente peruano"]
-    T --> G
-    T --> A
-    G --> G1
-    G --> G2
-    G --> G3
-    G --> G4
-    A --> A1
-    G -->|"si fallan, los controles<br/>de aplicación no son confiables"| A
-    L --> G
-    class T nucleo
-    class G,A,G1,G2,G3,G4,A1 concepto
-    class L alerta
-    classDef nucleo fill:#16285C,stroke:#16285C,stroke-width:1px,color:#FFFFFF;
-    classDef concepto fill:#E8F1FB,stroke:#16285C,stroke-width:1px,color:#16285C;
-    classDef producto fill:#E9F6F2,stroke:#0F766E,stroke-width:1px,color:#0F4C46;
-    classDef alerta fill:#FDF2E2,stroke:#B45309,stroke-width:1px,color:#7C3E00;
-```
-
 ---
 
-## Taxonomía de los controles de auditoría
+## Bloque 1 · Qué es un control y cuándo actúa
+
+> **La pregunta del bloque.** *Si un control evita el daño, ¿para qué sirven los demás?*
 
 Un control es cualquier medida —política, procedimiento, práctica o estructura organizacional— diseñada para dar seguridad razonable de que los objetivos se alcanzarán y los eventos no deseados serán prevenidos, detectados o corregidos.
 
@@ -84,17 +70,19 @@ Un control es cualquier medida —política, procedimiento, práctica o estructu
 | Detectivo | Reporte semanal de proveedores nuevos, revisado por Contraloría interna | El fraude ocurre y se descubre después; el dinero puede haber salido |
 | Correctivo | Procedimiento de reversión de transferencia dentro de las 24 h | Solo sirve si el detectivo actuó a tiempo |
 | Disuasivo | Cláusula de sanción en el reglamento interno, firmada por el trabajador | No detiene a quien ya decidió hacerlo |
-| Compensatorio | En una empresa de 6 personas donde no hay segundo aprobador: revisión mensual de todos los pagos por el contador externo | Depende de que el externo efectivamente revise |
+| Compensatorio | En una empresa de 6 personas donde no hay segundo aprobador. Revisión mensual de todos los pagos por el contador externo | Depende de que el externo efectivamente revise |
 
 Fíjese en que **ninguno alcanza solo**. Ese es el argumento de por qué el auditor evalúa el conjunto y no controla uno por uno.
 
-**Preguntas para la sesión**
+> **Microaplicación (4 min) · clasificar en voz alta.** El docente lanza los tres casos y el aula responde levantando la mano por categoría antes de que se diga la respuesta. Sirve para que el error salga a la luz mientras aún se puede corregir.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
-| Un banco tiene MFA en todas sus aplicaciones y ningún control detectivo. ¿Qué riesgo asume? | Que no se entera de los accesos indebidos que el MFA no evitó: credenciales robadas con el segundo factor comprometido, o abuso por parte de un usuario legítimo |
+| Un banco tiene MFA en todas sus aplicaciones y ningún control detectivo. ¿Qué riesgo asume? | Que no se entera de los accesos indebidos que el MFA no evitó. Credenciales robadas con el segundo factor comprometido, o abuso por parte de un usuario legítimo |
 | ¿Un respaldo es un control preventivo, detectivo o correctivo? | Correctivo. No evita el incidente ni lo detecta: limita la consecuencia. Quien lo llama preventivo confunde el momento en que actúa |
 | ¿Cuándo es legítimo apoyarse en un control compensatorio? | Cuando el control ideal es inviable por tamaño o costo, la compensación cubre el mismo objetivo y **queda documentada la razón**. Nunca como excusa permanente |
+
+> **El error frecuente del bloque.** Llamar preventivo al respaldo. Es el más repetido y revela la confusión de fondo — se clasifica por **lo que el control protege** en lugar de por **cuándo actúa**. Un respaldo protege el dato, sí, pero actúa después del incidente. La pregunta que desarma el error es siempre la misma — *¿el daño ya ocurrió cuando este control entra en juego?*
 
 **Clasificación por naturaleza.**
 
@@ -105,7 +93,9 @@ Fíjese en que **ninguno alcanza solo**. Ese es el argumento de por qué el audi
 
 **La dependencia jerárquica** es el concepto más importante de la semana. **Los controles de aplicación solo son confiables si los ITGC son efectivos**. Si cualquier desarrollador puede modificar el código en producción (ITGC de gestión de cambios roto), entonces la validación de que «el descuento no puede superar el 20 %» es irrelevante. Alguien pudo cambiarla ayer y devolverla hoy. Por eso el auditor **siempre evalúa primero los ITGC**.
 
-## Controles generales de TI
+## Bloque 2 · Controles generales de TI y la dependencia jerárquica
+
+> **La pregunta del bloque.** *¿Por qué el auditor no puede concluir sobre la validación del descuento sin mirar antes otra cosa?*
 
 | Dominio ITGC | Qué asegura | Pruebas típicas | COBIT 2019 | ISO/IEC 27001:2022 |
 |---|---|---|---|---|
@@ -130,19 +120,25 @@ Un control bien diseñado que se ejecutó 8 de 12 meses **falla la prueba de efi
 | **Evidencia** | El procedimiento firmado | El registro de cambios, contrastado con los despliegues reales del sistema |
 | **Resultado posible A** | Diseño adecuado | 14 de 14 cambios aprobados → **el control opera** |
 | **Resultado posible B** | Diseño adecuado | 9 de 14 aprobados, y 3 de los 5 sin aprobar son de urgencia → **falla la eficacia operativa** |
-| **Resultado posible C** | El procedimiento permite que el mismo desarrollador apruebe → **falla el diseño** | Irrelevante: si el diseño falla, no se prueba la eficacia |
+| **Resultado posible C** | El procedimiento permite que el mismo desarrollador apruebe → **falla el diseño** | **Irrelevante.** Si el diseño falla, no se prueba la eficacia |
 
 > **El orden importa.** Si el diseño falla, la prueba de eficacia no se ejecuta. No tiene sentido verificar la operación de un control que no mitigaría el riesgo aunque operara siempre.
 
-**Preguntas para la sesión**
+> **Microaplicación (5 min) · el caso del descuento, resuelto.** Se vuelve al problema con el que abrió la sesión y el aula responde en parejas, por escrito y en una línea, *¿qué ITGC falló para que la validación del 20 % dejara de proteger?* Se recogen dos o tres respuestas antes de dar la correcta.
 
-| Pregunta | Qué debe contener una buena respuesta |
+| Caso | Qué debe contener una buena respuesta |
 |---|---|
 | El auditado dice: «el control existe, lo que pasa es que no lo documentamos». ¿Es un hallazgo? | Sí. Un control que no deja rastro no puede verificarse. La condición no es que el control no exista, sino que **no hay evidencia de su operación** durante el periodo |
 | En una empresa de 8 personas, el jefe de sistemas desarrolla, prueba y despliega. ¿Qué se recomienda? | No «contratar más gente». Un control compensatorio: revisión posterior por un tercero —el contador externo o la gerencia— de los cambios aplicados, con registro. Se declara como compensatorio y por qué |
-| ¿Por qué el auditor evalúa primero los ITGC y no los controles de aplicación? | Porque si los ITGC fallan, cualquier conclusión sobre los controles de aplicación pierde sustento: la validación pudo alterarse sin dejar rastro |
+| ¿Por qué el auditor evalúa primero los ITGC y no los controles de aplicación? | Porque si los ITGC fallan, cualquier conclusión sobre los controles de aplicación pierde sustento. La validación pudo alterarse sin dejar rastro |
 
-## Controles de aplicación sobre el ciclo del dato
+> **La respuesta al problema de la sesión.** El vendedor no burló la validación. **Alguien con acceso al código la desactivó, aplicó los descuentos y la devolvió.** El ITGC de gestión de cambios estaba roto —cualquiera podía desplegar sin aprobación ni rastro— y por eso el control de aplicación era inauditable desde el principio. El auditor verificó 4 100 transacciones contra una regla que no sabía si había estado vigente durante el periodo. **Probó la fotografía de hoy y concluyó sobre el año.**
+
+> **El error frecuente del bloque.** Probar la eficacia operativa de un control cuyo diseño no se ha evaluado. Si el diseño falla, la prueba de operación es trabajo perdido, y peor aún, produce una conclusión favorable sobre un control que no protege.
+
+## Bloque 3 · Controles de aplicación sobre el ciclo del dato
+
+> **La pregunta del bloque.** *El dato entra bien. ¿Dónde puede estropearse después?*
 
 Se organizan siguiendo el recorrido del dato dentro del sistema:
 
@@ -165,13 +161,17 @@ Se organizan siguiendo el recorrido del dato dentro del sistema:
 | Detectivo | Reporte semanal de cambios de datos bancarios revisado por Tesorería | Verificar firma o registro de revisión en 12 semanas del periodo |
 | Preventivo | Bloqueo de pagos durante 48 h tras un cambio de cuenta | Intentar un pago inmediato en el ambiente de pruebas |
 
-## Controles físicos, ambientales y de calidad
+> **Microaplicación (3 min) · el control decorativo.** El docente enuncia un control real de un sistema conocido —«el sistema exige que el campo de observaciones tenga al menos diez caracteres»— y el aula responde a mano alzada *¿a cuál de los seis objetivos de aserción sirve?* La respuesta correcta es que a ninguno, y ese es el punto.
+
+> **El error frecuente del bloque.** Auditar la entrada del dato y detenerse ahí. La entrada es donde están los controles visibles y donde el auditado enseña sus validaciones con orgullo. El fraude de cuenta bancaria del ejemplo **no ocurre en la entrada**. Ocurre en los datos maestros, que casi nadie mira.
+
+## Bloque 4 · Controles físicos, ambientales y de calidad
 
 **Físicos y ambientales (ISO/IEC 27001:2022, tema A.7).** Aunque muchas empresas migraron a la nube, el control físico no desaparece — **se transfiere al proveedor y debe auditarse por certificación de tercero** (informe SOC 2 Tipo II, certificado ISO/IEC 27001 con su alcance leído en detalle). En lo que permanece en las instalaciones —oficinas, dispositivos de usuario, cableado, respaldos en cinta— se auditan — perímetro (A.7.1), controles de entrada (A.7.2), protección contra amenazas físicas y ambientales (A.7.5), **escritorio y pantalla limpios** (A.7.7), seguridad del cableado (A.7.12), mantenimiento (A.7.13) y **eliminación o reutilización segura de equipos** (A.7.14).
 
 **Controles de calidad del software.** La NTP-ISO/IEC 12207 estructura los procesos del ciclo de vida y la serie ISO/IEC 25000 (SQuaRE) define el modelo de calidad del producto con ocho características — adecuación funcional, eficiencia de desempeño, compatibilidad, usabilidad, fiabilidad, **seguridad**, mantenibilidad y portabilidad. Para el auditor, la calidad es auditable cuando existe una métrica, un umbral aceptado y evidencia de medición — «cobertura de pruebas ≥ 70 %», «cero vulnerabilidades críticas en el análisis de dependencias antes del despliegue», «defectos en producción por versión ≤ 3».
 
-## La Ley Sarbanes-Oxley y su equivalente peruano
+## Bloque 5 · La Ley Sarbanes-Oxley y el régimen peruano
 
 **Qué es SOX.** La *Sarbanes-Oxley Act of 2002* fue la respuesta legislativa de los Estados Unidos a los fraudes contables de Enron, WorldCom y Tyco. Dos secciones concentran el impacto sobre TI:
 
@@ -198,6 +198,22 @@ El marco de referencia usado es **COSO (*Committee of Sponsoring Organizations o
 | **Gobierno digital** | Decreto Legislativo 1412 y D. S. 029-2021-PCM | Líder de Gobierno Digital, Oficial de Seguridad de la Información, uso obligatorio de la NTP-ISO/IEC 27001 vigente |
 
 > **Conclusión operativa.** Cuando un estudiante audite una empresa peruana debe preguntar primero **a qué régimen pertenece** — financiero (SBS), mercado de valores (SMV), público (Contraloría) o privado no regulado. El criterio de auditoría cambia por completo, y aplicar el criterio equivocado invalida el hallazgo.
+
+## Cierre · qué se lleva de aquí
+
+**La respuesta a la pregunta con la que abrimos.** Un control puede estar funcionando el día que se mira y haber estado desactivado el día que importaba. Verificar un control de aplicación sin haber evaluado antes los controles generales de TI **no es una auditoría incompleta, es una conclusión sin sustento**, porque el auditor no puede saber si lo que probó estuvo vigente durante el periodo.
+
+**Las tres ideas que deben quedar.**
+
+| Idea | Por qué importa en el ejercicio profesional |
+|---|---|
+| Un control se clasifica por **cuándo actúa**, no por lo que protege | Determina qué se puede concluir de él. Un correctivo nunca demuestra que el riesgo no se materializó |
+| **Los controles de aplicación solo son confiables si los ITGC son efectivos** | Fija el orden del encargo. Es la razón por la que el programa de trabajo empieza siempre por accesos y cambios |
+| Diseño y eficacia operativa son **dos pruebas distintas**, y el orden no es negociable | Un control bien diseñado que operó ocho de doce meses produce un hallazgo distinto —y a menudo más grave— que uno mal diseñado |
+
+**Volviendo a la exploración del inicio.** Se releen las respuestas que el aula dio antes de la teoría. La pregunta que casi nadie hizo —*¿estuvo esa validación vigente todo el año?*— es exactamente la que separa a un técnico que revisa de un auditor que concluye.
+
+**Lo que sigue.** La [dinámica de esta sesión](2-DINAMICA.md) entrega la narrativa del proceso de compras y pagos de su organización, y pide dos cosas que solo se pueden responder con lo visto aquí — **qué control no se puede concluir efectivo por culpa del entorno de TI**, y **cuál falla el diseño y cuál la eficacia operativa**. La distinción que acaba de aprender es literalmente el producto que va a entregar.
 
 ---
 
